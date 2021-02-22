@@ -5,16 +5,17 @@
 
 <!-- badges: start -->
 
-<!-- [![Build Status](https://travis-ci.com/nt-williams/lmtp.svg?token=DA4a53nWMx6q9LisKdRD&branch=master)](https://travis-ci.com/nt-williams/lmtp) -->
-
-<!-- [![codecov](https://codecov.io/gh/nt-williams/lmtp/branch/master/graph/badge.svg)](https://codecov.io/gh/nt-williams/lmtp) -->
-
-<!-- [![MIT license](http://img.shields.io/badge/license-MIT-brightgreen.svg)](http://opensource.org/licenses/MIT) -->
-
-<!-- [![Project Status: Active – The project has reached a stable, usable state and is being actively developed.](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active) -->
-
-<!-- [![DOI](https://zenodo.org/badge/251356023.svg)](https://zenodo.org/badge/latestdoi/251356023) -->
-
+[![CRAN
+status](https://www.r-pkg.org/badges/version/lmtp)](https://CRAN.R-project.org/package=lmtp)
+![](http://cranlogs.r-pkg.org/badges/grand-total/lmtp) [![R build
+status](https://github.com/nt-williams/lmtp/workflows/R-CMD-check/badge.svg)](https://github.com/nt-williams/lmtp/actions)
+[![codecov](https://codecov.io/gh/nt-williams/lmtp/branch/master/graph/badge.svg)](https://codecov.io/gh/nt-williams/lmtp)
+[![License: GPL
+v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
+[![Project Status: Active – The project has reached a stable, usable
+state and is being actively
+developed.](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)
+[![DOI](https://zenodo.org/badge/251356023.svg)](https://zenodo.org/badge/latestdoi/251356023)
 <!-- badges: end -->
 
 > Non-parametric Causal Effects of Feasible Interventions Based on
@@ -24,23 +25,7 @@ Nick Williams and Ivan Diaz
 
 -----
 
-## Installation
-
-`lmtp` can be installed from GitHub with:
-
-``` r
-devtools::install_github("nt-williams/lmtp")
-```
-
-The stable, development version can be installed from GitHub with:
-
-``` r
-devtools::install_github("nt-williams/lmtp@devel")
-```
-
-## Scope
-
-`lmtp` is an R package that provides an estimation framework for the
+**lmtp** is an R package that provides an estimation framework for the
 casual effects of feasible interventions based on point-treatment and
 longitudinal modified treatment policies as described in Diaz, Williams,
 Hoffman, and Schenck (2020). Two primary estimators are supported, a
@@ -49,16 +34,52 @@ robust (SDR) estimator (a G-computation and an inverse probability of
 treatment weighting estimator are provided for the sake of being
 thorough but their use is recommended against in favor of the TML and
 SDR estimators). Both binary and continuous outcomes (both with
-censoring) are allowed. `lmtp` is built atop the
-[`sl3`](https://github.com/tlverse/sl3) package to utilize ensemble
-machine learning for estimation. The treatment mechanism is estimated
-via a density ratio classification procedure irrespective of treatment
-variable type providing decreased computation time when treatment is
-continuous. Dynamic treatment regimes are also supported.
+censoring) are allowed. **lmtp** is built atop the
+[`SuperLearner`](https://cran.r-project.org/package=SuperLearner)
+package to utilize ensemble machine learning for estimation. The
+treatment mechanism is estimated via a density ratio classification
+procedure irrespective of treatment variable type providing decreased
+computation time when treatment is continuous. Dynamic treatment regimes
+are also supported.
 
 For an in-depth look at the package’s functionality, please consult the
-accompanying
-[article](https://htmlpreview.github.io/?https://gist.githubusercontent.com/nt-williams/ddd44c48390b8d976fad71750e48d8bf/raw/45db700a02bf92e2a55790e60ed48266a97ca4e7/intro-lmtp.html).
+accompanying vignette.
+
+## Installation
+
+**lmtp** can be installed from CRAN with:
+
+``` r
+install.packages("lmtp")
+```
+
+The stable, development version can be installed from GitHub with:
+
+``` r
+devtools::install_github("nt-williams/lmtp@devel")
+```
+
+The **sl3** compatible version can be installed from GitHub with:
+
+``` r
+devtools::install_github("nt-williams/lmtp@sl3")
+```
+
+## What even is a modified treatment policy?
+
+Modified treatment policies (MTP) are interventions that can depend on
+the *natural* value of the treatment (the treatment value in the absence
+of intervention). A key assumption for causal inference is the
+*positivity assumption* which states that all observations have a
+non-zero probability of experiencing a treatment value. **When working
+with continuous or multivalued treatments, violations of the positivity
+assumption are likely to occur. MTPs offer a solution to this problem.**
+
+## Can lmtp estimation other effects?
+
+Yes\! **lmtp** can estimate the effects of deterministic, static
+treatment effects (such as the ATE) and deterministic, dynamic treatment
+regimes for binary, continuous, and survival outcomes.
 
 ### Features
 
@@ -77,6 +98,7 @@ accompanying
 | Binary outcome                  |   ✓    |
 | Censored outcome                |   ✓    |
 | Mediation                       |        |
+| Survey weights                  |   ✓    |
 | Super learner                   |   ✓    |
 | Clustered data                  |   ✓    |
 | Parallel processing             |   ✓    |
@@ -86,6 +108,7 @@ accompanying
 
 ``` r
 library(lmtp)
+#> This is the sl3 compatible version of lmtp!
 
 # the data: 4 treatment nodes with time varying covariates and a binary outcome
 head(sim_t4)
@@ -135,10 +158,10 @@ lmtp_tmle(sim_t4, a, "Y", time_vary = time_varying, k = 0, shift = policy, folds
 
 ## Similar Implementations
 
-A variety of other R packages perform similar tasks as `lmtp`. However,
-`lmtp` is the only R package currently capable of estimating causal
-effects for binary, categorical, and continuous exposures in both the
-point treatment and longitudinal setting using traditional causal
+A variety of other R packages perform similar tasks as **lmtp**.
+However, **lmtp** is the only R package currently capable of estimating
+causal effects for binary, categorical, and continuous exposures in both
+the point treatment and longitudinal setting using traditional causal
 effects or modified treatment policies.
 
   - [`txshift`](https://github.com/nhejazi/txshift)  
@@ -149,7 +172,7 @@ effects or modified treatment policies.
 
 ## Citation
 
-Please cite the following when using `lmtp` in publications. Citation
+Please cite the following when using **lmtp** in publications. Citation
 should include both the R package and the paper establishing the
 statistical methodology.
 
