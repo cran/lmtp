@@ -15,42 +15,31 @@
 
 <title>The LMTP Package</title>
 
-<script>// Pandoc 2.9 adds attributes on both header and div. We remove the former (to
-// be compatible with the behavior of Pandoc < 2.8).
-document.addEventListener('DOMContentLoaded', function(e) {
-  var hs = document.querySelectorAll("div.section[class*='level'] > :first-child");
-  var i, h, a;
-  for (i = 0; i < hs.length; i++) {
-    h = hs[i];
-    if (!/^h[1-6]$/i.test(h.tagName)) continue;  // it should be a header h1-h6
-    a = h.attributes;
-    while (a.length > 0) h.removeAttribute(a[0].name);
+<script src="data:application/javascript;base64,Ly8gUGFuZG9jIDIuOSBhZGRzIGF0dHJpYnV0ZXMgb24gYm90aCBoZWFkZXIgYW5kIGRpdi4gV2UgcmVtb3ZlIHRoZSBmb3JtZXIgKHRvCi8vIGJlIGNvbXBhdGlibGUgd2l0aCB0aGUgYmVoYXZpb3Igb2YgUGFuZG9jIDwgMi44KS4KZG9jdW1lbnQuYWRkRXZlbnRMaXN0ZW5lcignRE9NQ29udGVudExvYWRlZCcsIGZ1bmN0aW9uKGUpIHsKICB2YXIgaHMgPSBkb2N1bWVudC5xdWVyeVNlbGVjdG9yQWxsKCJkaXYuc2VjdGlvbltjbGFzcyo9J2xldmVsJ10gPiA6Zmlyc3QtY2hpbGQiKTsKICB2YXIgaSwgaCwgYTsKICBmb3IgKGkgPSAwOyBpIDwgaHMubGVuZ3RoOyBpKyspIHsKICAgIGggPSBoc1tpXTsKICAgIGlmICghL15oWzEtNl0kL2kudGVzdChoLnRhZ05hbWUpKSBjb250aW51ZTsgIC8vIGl0IHNob3VsZCBiZSBhIGhlYWRlciBoMS1oNgogICAgYSA9IGguYXR0cmlidXRlczsKICAgIHdoaWxlIChhLmxlbmd0aCA+IDApIGgucmVtb3ZlQXR0cmlidXRlKGFbMF0ubmFtZSk7CiAgfQp9KTsK"></script>
+
+<style type="text/css">
+  code{white-space: pre-wrap;}
+  span.smallcaps{font-variant: small-caps;}
+  span.underline{text-decoration: underline;}
+  div.column{display: inline-block; vertical-align: top; width: 50%;}
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  ul.task-list{list-style: none;}
+    </style>
+
+
+<style type="text/css">
+  code {
+    white-space: pre;
   }
-});
-</script>
-<script>// Hide empty <a> tag within highlighted CodeBlock for screen reader accessibility (see https://github.com/jgm/pandoc/issues/6352#issuecomment-626106786) -->
-// v0.0.1
-// Written by JooYoung Seo (jooyoung@psu.edu) and Atsushi Yasumoto on June 1st, 2020.
-
-document.addEventListener('DOMContentLoaded', function() {
-  const codeList = document.getElementsByClassName("sourceCode");
-  for (var i = 0; i < codeList.length; i++) {
-    var linkList = codeList[i].getElementsByTagName('a');
-    for (var j = 0; j < linkList.length; j++) {
-      if (linkList[j].innerHTML === "") {
-        linkList[j].setAttribute('aria-hidden', 'true');
-      }
-    }
+  .sourceCode {
+    overflow: visible;
   }
-});
-</script>
-
-
-<style type="text/css">code{white-space: pre;}</style>
+</style>
 <style type="text/css" data-origin="pandoc">
 pre > code.sourceCode { white-space: pre; position: relative; }
 pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
 div.sourceCode { margin: 1em 0; }
 pre.sourceCode { margin: 0; }
@@ -136,187 +125,30 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 
 
-<style type="text/css">body {
-background-color: #fff;
-margin: 1em auto;
-max-width: 700px;
-overflow: visible;
-padding-left: 2em;
-padding-right: 2em;
-font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
-font-size: 14px;
-line-height: 1.35;
+<style type="text/css">
+/* for pandoc --citeproc since 2.11 */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
 }
-#TOC {
-clear: both;
-margin: 0 0 10px 10px;
-padding: 4px;
-width: 400px;
-border: 1px solid #CCCCCC;
-border-radius: 5px;
-background-color: #f6f6f6;
-font-size: 13px;
-line-height: 1.3;
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
 }
-#TOC .toctitle {
-font-weight: bold;
-font-size: 15px;
-margin-left: 5px;
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
 }
-#TOC ul {
-padding-left: 40px;
-margin-left: -1.5em;
-margin-top: 5px;
-margin-bottom: 5px;
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
 }
-#TOC ul ul {
-margin-left: -2em;
+div.csl-indent {
+  margin-left: 2em;
 }
-#TOC li {
-line-height: 16px;
-}
-table {
-margin: 1em auto;
-border-width: 1px;
-border-color: #DDDDDD;
-border-style: outset;
-border-collapse: collapse;
-}
-table th {
-border-width: 2px;
-padding: 5px;
-border-style: inset;
-}
-table td {
-border-width: 1px;
-border-style: inset;
-line-height: 18px;
-padding: 5px 5px;
-}
-table, table th, table td {
-border-left-style: none;
-border-right-style: none;
-}
-table thead, table tr.even {
-background-color: #f7f7f7;
-}
-p {
-margin: 0.5em 0;
-}
-blockquote {
-background-color: #f6f6f6;
-padding: 0.25em 0.75em;
-}
-hr {
-border-style: solid;
-border: none;
-border-top: 1px solid #777;
-margin: 28px 0;
-}
-dl {
-margin-left: 0;
-}
-dl dd {
-margin-bottom: 13px;
-margin-left: 13px;
-}
-dl dt {
-font-weight: bold;
-}
-ul {
-margin-top: 0;
-}
-ul li {
-list-style: circle outside;
-}
-ul ul {
-margin-bottom: 0;
-}
-pre, code {
-background-color: #f7f7f7;
-border-radius: 3px;
-color: #333;
-white-space: pre-wrap; 
-}
-pre {
-border-radius: 3px;
-margin: 5px 0px 10px 0px;
-padding: 10px;
-}
-pre:not([class]) {
-background-color: #f7f7f7;
-}
-code {
-font-family: Consolas, Monaco, 'Courier New', monospace;
-font-size: 85%;
-}
-p > code, li > code {
-padding: 2px 0px;
-}
-div.figure {
-text-align: center;
-}
-img {
-background-color: #FFFFFF;
-padding: 2px;
-border: 1px solid #DDDDDD;
-border-radius: 3px;
-border: 1px solid #CCCCCC;
-margin: 0 5px;
-}
-h1 {
-margin-top: 0;
-font-size: 35px;
-line-height: 40px;
-}
-h2 {
-border-bottom: 4px solid #f7f7f7;
-padding-top: 10px;
-padding-bottom: 2px;
-font-size: 145%;
-}
-h3 {
-border-bottom: 2px solid #f7f7f7;
-padding-top: 10px;
-font-size: 120%;
-}
-h4 {
-border-bottom: 1px solid #f7f7f7;
-margin-left: 8px;
-font-size: 105%;
-}
-h5, h6 {
-border-bottom: 1px solid #ccc;
-font-size: 105%;
-}
-a {
-color: #0033dd;
-text-decoration: none;
-}
-a:hover {
-color: #6666ff; }
-a:visited {
-color: #800080; }
-a:visited:hover {
-color: #BB00BB; }
-a[href^="http:"] {
-text-decoration: underline; }
-a[href^="https:"] {
-text-decoration: underline; }
-
-code > span.kw { color: #555; font-weight: bold; } 
-code > span.dt { color: #902000; } 
-code > span.dv { color: #40a070; } 
-code > span.bn { color: #d14; } 
-code > span.fl { color: #d14; } 
-code > span.ch { color: #d14; } 
-code > span.st { color: #d14; } 
-code > span.co { color: #888888; font-style: italic; } 
-code > span.ot { color: #007020; } 
-code > span.al { color: #ff0000; font-weight: bold; } 
-code > span.fu { color: #900; font-weight: bold; } 
-code > span.er { color: #a61717; background-color: #e3d2d2; } 
 </style>
+
+<link rel="stylesheet" href="data:text/css,body%20%7B%0Abackground%2Dcolor%3A%20%23fff%3B%0Amargin%3A%201em%20auto%3B%0Amax%2Dwidth%3A%20700px%3B%0Aoverflow%3A%20visible%3B%0Apadding%2Dleft%3A%202em%3B%0Apadding%2Dright%3A%202em%3B%0Afont%2Dfamily%3A%20%22Open%20Sans%22%2C%20%22Helvetica%20Neue%22%2C%20Helvetica%2C%20Arial%2C%20sans%2Dserif%3B%0Afont%2Dsize%3A%2014px%3B%0Aline%2Dheight%3A%201%2E35%3B%0A%7D%0A%23TOC%20%7B%0Aclear%3A%20both%3B%0Amargin%3A%200%200%2010px%2010px%3B%0Apadding%3A%204px%3B%0Awidth%3A%20400px%3B%0Aborder%3A%201px%20solid%20%23CCCCCC%3B%0Aborder%2Dradius%3A%205px%3B%0Abackground%2Dcolor%3A%20%23f6f6f6%3B%0Afont%2Dsize%3A%2013px%3B%0Aline%2Dheight%3A%201%2E3%3B%0A%7D%0A%23TOC%20%2Etoctitle%20%7B%0Afont%2Dweight%3A%20bold%3B%0Afont%2Dsize%3A%2015px%3B%0Amargin%2Dleft%3A%205px%3B%0A%7D%0A%23TOC%20ul%20%7B%0Apadding%2Dleft%3A%2040px%3B%0Amargin%2Dleft%3A%20%2D1%2E5em%3B%0Amargin%2Dtop%3A%205px%3B%0Amargin%2Dbottom%3A%205px%3B%0A%7D%0A%23TOC%20ul%20ul%20%7B%0Amargin%2Dleft%3A%20%2D2em%3B%0A%7D%0A%23TOC%20li%20%7B%0Aline%2Dheight%3A%2016px%3B%0A%7D%0Atable%20%7B%0Amargin%3A%201em%20auto%3B%0Aborder%2Dwidth%3A%201px%3B%0Aborder%2Dcolor%3A%20%23DDDDDD%3B%0Aborder%2Dstyle%3A%20outset%3B%0Aborder%2Dcollapse%3A%20collapse%3B%0A%7D%0Atable%20th%20%7B%0Aborder%2Dwidth%3A%202px%3B%0Apadding%3A%205px%3B%0Aborder%2Dstyle%3A%20inset%3B%0A%7D%0Atable%20td%20%7B%0Aborder%2Dwidth%3A%201px%3B%0Aborder%2Dstyle%3A%20inset%3B%0Aline%2Dheight%3A%2018px%3B%0Apadding%3A%205px%205px%3B%0A%7D%0Atable%2C%20table%20th%2C%20table%20td%20%7B%0Aborder%2Dleft%2Dstyle%3A%20none%3B%0Aborder%2Dright%2Dstyle%3A%20none%3B%0A%7D%0Atable%20thead%2C%20table%20tr%2Eeven%20%7B%0Abackground%2Dcolor%3A%20%23f7f7f7%3B%0A%7D%0Ap%20%7B%0Amargin%3A%200%2E5em%200%3B%0A%7D%0Ablockquote%20%7B%0Abackground%2Dcolor%3A%20%23f6f6f6%3B%0Apadding%3A%200%2E25em%200%2E75em%3B%0A%7D%0Ahr%20%7B%0Aborder%2Dstyle%3A%20solid%3B%0Aborder%3A%20none%3B%0Aborder%2Dtop%3A%201px%20solid%20%23777%3B%0Amargin%3A%2028px%200%3B%0A%7D%0Adl%20%7B%0Amargin%2Dleft%3A%200%3B%0A%7D%0Adl%20dd%20%7B%0Amargin%2Dbottom%3A%2013px%3B%0Amargin%2Dleft%3A%2013px%3B%0A%7D%0Adl%20dt%20%7B%0Afont%2Dweight%3A%20bold%3B%0A%7D%0Aul%20%7B%0Amargin%2Dtop%3A%200%3B%0A%7D%0Aul%20li%20%7B%0Alist%2Dstyle%3A%20circle%20outside%3B%0A%7D%0Aul%20ul%20%7B%0Amargin%2Dbottom%3A%200%3B%0A%7D%0Apre%2C%20code%20%7B%0Abackground%2Dcolor%3A%20%23f7f7f7%3B%0Aborder%2Dradius%3A%203px%3B%0Acolor%3A%20%23333%3B%0Awhite%2Dspace%3A%20pre%2Dwrap%3B%20%0A%7D%0Apre%20%7B%0Aborder%2Dradius%3A%203px%3B%0Amargin%3A%205px%200px%2010px%200px%3B%0Apadding%3A%2010px%3B%0A%7D%0Apre%3Anot%28%5Bclass%5D%29%20%7B%0Abackground%2Dcolor%3A%20%23f7f7f7%3B%0A%7D%0Acode%20%7B%0Afont%2Dfamily%3A%20Consolas%2C%20Monaco%2C%20%27Courier%20New%27%2C%20monospace%3B%0Afont%2Dsize%3A%2085%25%3B%0A%7D%0Ap%20%3E%20code%2C%20li%20%3E%20code%20%7B%0Apadding%3A%202px%200px%3B%0A%7D%0Adiv%2Efigure%20%7B%0Atext%2Dalign%3A%20center%3B%0A%7D%0Aimg%20%7B%0Abackground%2Dcolor%3A%20%23FFFFFF%3B%0Apadding%3A%202px%3B%0Aborder%3A%201px%20solid%20%23DDDDDD%3B%0Aborder%2Dradius%3A%203px%3B%0Aborder%3A%201px%20solid%20%23CCCCCC%3B%0Amargin%3A%200%205px%3B%0A%7D%0Ah1%20%7B%0Amargin%2Dtop%3A%200%3B%0Afont%2Dsize%3A%2035px%3B%0Aline%2Dheight%3A%2040px%3B%0A%7D%0Ah2%20%7B%0Aborder%2Dbottom%3A%204px%20solid%20%23f7f7f7%3B%0Apadding%2Dtop%3A%2010px%3B%0Apadding%2Dbottom%3A%202px%3B%0Afont%2Dsize%3A%20145%25%3B%0A%7D%0Ah3%20%7B%0Aborder%2Dbottom%3A%202px%20solid%20%23f7f7f7%3B%0Apadding%2Dtop%3A%2010px%3B%0Afont%2Dsize%3A%20120%25%3B%0A%7D%0Ah4%20%7B%0Aborder%2Dbottom%3A%201px%20solid%20%23f7f7f7%3B%0Amargin%2Dleft%3A%208px%3B%0Afont%2Dsize%3A%20105%25%3B%0A%7D%0Ah5%2C%20h6%20%7B%0Aborder%2Dbottom%3A%201px%20solid%20%23ccc%3B%0Afont%2Dsize%3A%20105%25%3B%0A%7D%0Aa%20%7B%0Acolor%3A%20%230033dd%3B%0Atext%2Ddecoration%3A%20none%3B%0A%7D%0Aa%3Ahover%20%7B%0Acolor%3A%20%236666ff%3B%20%7D%0Aa%3Avisited%20%7B%0Acolor%3A%20%23800080%3B%20%7D%0Aa%3Avisited%3Ahover%20%7B%0Acolor%3A%20%23BB00BB%3B%20%7D%0Aa%5Bhref%5E%3D%22http%3A%22%5D%20%7B%0Atext%2Ddecoration%3A%20underline%3B%20%7D%0Aa%5Bhref%5E%3D%22https%3A%22%5D%20%7B%0Atext%2Ddecoration%3A%20underline%3B%20%7D%0A%0Acode%20%3E%20span%2Ekw%20%7B%20color%3A%20%23555%3B%20font%2Dweight%3A%20bold%3B%20%7D%20%0Acode%20%3E%20span%2Edt%20%7B%20color%3A%20%23902000%3B%20%7D%20%0Acode%20%3E%20span%2Edv%20%7B%20color%3A%20%2340a070%3B%20%7D%20%0Acode%20%3E%20span%2Ebn%20%7B%20color%3A%20%23d14%3B%20%7D%20%0Acode%20%3E%20span%2Efl%20%7B%20color%3A%20%23d14%3B%20%7D%20%0Acode%20%3E%20span%2Ech%20%7B%20color%3A%20%23d14%3B%20%7D%20%0Acode%20%3E%20span%2Est%20%7B%20color%3A%20%23d14%3B%20%7D%20%0Acode%20%3E%20span%2Eco%20%7B%20color%3A%20%23888888%3B%20font%2Dstyle%3A%20italic%3B%20%7D%20%0Acode%20%3E%20span%2Eot%20%7B%20color%3A%20%23007020%3B%20%7D%20%0Acode%20%3E%20span%2Eal%20%7B%20color%3A%20%23ff0000%3B%20font%2Dweight%3A%20bold%3B%20%7D%20%0Acode%20%3E%20span%2Efu%20%7B%20color%3A%20%23900%3B%20font%2Dweight%3A%20bold%3B%20%7D%20%0Acode%20%3E%20span%2Eer%20%7B%20color%3A%20%23a61717%3B%20background%2Dcolor%3A%20%23e3d2d2%3B%20%7D%20%0A" type="text/css" />
 
 
 
@@ -359,7 +191,7 @@ code > span.er { color: #a61717; background-color: #e3d2d2; }
 <h2>Introduction</h2>
 <p>Most modern causal inference methods consider the effects of a treatment on a population mean outcome under interventions that set the treatment value deterministically. For example, the average treatment effect (ATE) considers the hypothetical difference in a population mean outcome if a dichotomous exposure was applied to all observations versus if it was applied to none. In the case of a continuous exposure, interventions that set the exposure to a static value deterministically are of little practical relevance. Furthermore, the estimation of causal effects requires the so called positivity assumption which states that all observations have a greater than zero chance of experiencing the exposure value under consideration. This assumption is often violated when evaluating the effects of deterministic interventions, and is usually exacerbated with longitudinal data as the number of time points grows.</p>
 <p>Modified treatment policies (MTPs) are a class of stochastic treatment regimes that can be formulated to avoid the above problems <span class="citation">(Díaz and Laan 2012; Haneuse and Rotnitzky 2013)</span>. In a recent article <span class="citation">(Díaz et al. 2020)</span>, we generalized the theoretical framework for estimation of the effect of MTPs to the longitudinal setting, accounting for time-varying treatment, covariates, and right-censoring of the outcome. Briefly, MTPs are hypothetical interventions where the post-intervention value of treatment can depend on the actual observed treatment level and the unit’s history. As such, MTPs are useful to assess the effect of continuous treatments. For example, <span class="citation">(Haneuse and Rotnitzky 2013)</span> assess the effect of reducing surgery time by a predetermined amount (e.g., 5 minutes) for lung cancer patients, where the reduction is carried out only for those patients for whom the intervention is feasible. Furthermore, MTPs generalize many important effect estimands, such as the effect of a dynamic treatment rule in which the treatment level is assigned as a function of a unit’s history. For example, dynamic treatment rules, a particular case of MTPs, may be used to estimate the effect of policies such as switching HIV treatment once the CD4 T-cell count goes below a predetermined threshold <span class="citation">(Petersen et al. 2014)</span>. MTPs also generalize many interesting causal effects such as the average treatment effects, the causal risk ratio, and causal odds ratio. In this article we describe how <strong>lmtp</strong> can be used for estimating the causal effects of MTPs, and present examples on the use of the software for several of the above cases.</p>
-<p>The package <strong>lmtp</strong> implements four methods for estimating the effects of MTPs. Two of these estimators, a targeted minimum-loss based estimator <span class="citation">(M. J. van der Laan and Rose 2011; Laan and Rubin 2006)</span> and a sequentially doubly-robust <span class="citation">(Buckley and James 1979; Fan and Gijbels 1994; Laan and Dudoit 2003; Rotnitzky, Faraggi, and Schisterman 2006; Rubin and Laan 2006; Kennedy et al. 2017)</span>, are multiply-robust. TMLE and SDR are implemented using cross-fitting to allow for the use of flexible machine learning regression methodology <span class="citation">(Díaz et al. 2020)</span>.</p>
+<p>The package <strong>lmtp</strong> implements four methods for estimating the effects of MTPs. Two of these estimators, a targeted minimum-loss based estimator <span class="citation">(M. J. van der Laan and Rose 2011; M. J. van der Laan and Rubin 2006)</span> and a sequentially doubly-robust <span class="citation">(Buckley and James 1979; Fan and Gijbels 1994; M. van der Laan and Dudoit 2003; Rotnitzky, Faraggi, and Schisterman 2006; Rubin and Laan 2006; Kennedy et al. 2017)</span>, are multiply-robust. TMLE and SDR are implemented using cross-fitting to allow for the use of flexible machine learning regression methodology <span class="citation">(Díaz et al. 2020)</span>.</p>
 <div id="setup" class="section level3">
 <h3>Setup</h3>
 <p>In this article, we will use the notation of <span class="citation">(Díaz et al. 2020)</span> with only slight modifications. Let <span class="math inline">\(i\)</span> be the index of an observation from a data set with <span class="math inline">\(n\)</span> total units and <span class="math inline">\(t\)</span> be the index of time for a total number of time points <span class="math inline">\(\tau\)</span>. The observed data for observation <span class="math inline">\(i\)</span> may be denoted as</p>
@@ -370,7 +202,7 @@ Z_i = (W, L_1, A_1, L_2, A_2, …, L_{\tau}, A_{\tau}, Y_{\tau + 1})
 </div>
 <div id="modified-treatment-policies" class="section level3">
 <h3>Modified Treatment Policies</h3>
-<p>We use the potential outcomes framework to define the causal effect of interest using our established data structure. We consider a hypothetical policy where <span class="math inline">\(\bar{A}\)</span> is set to a regime <span class="math inline">\(d\)</span> defined as <span class="math inline">\(A^{d}_t = d_t(A_t, H^{d}_t)\)</span>, where <span class="math inline">\(H^{d}_t = (\bar{L}_t, \bar{A}^{d}_{t-1})\)</span>, for a set of user-given regimes <span class="math inline">\(d_t:t \in \{1, ..., \tau\}\)</span>. The defining characteristic that makes regime <span class="math inline">\(d_t\)</span> a modified treatment policy is that it depends on the <strong>natural value</strong> of treatment <span class="math inline">\(\bar{A}_t\)</span>, that is, the value that the treatment would have taken under no intervention. However, when the function <span class="math inline">\(d_t\)</span> only depends on <span class="math inline">\(H_t\)</span>, the LMTP reduces to the <em>dynamic treatment regimes</em> studied in the literature. Furthermore, when <span class="math inline">\(d_t\)</span> is a constant that and does not depend on either <span class="math inline">\(A_t\)</span> or <span class="math inline">\(H_t\)</span>, then LMTPs reduce to the conventional static rules studied in the causal inference literature <span class="citation">(Bang and Robins 2005; Mark J van der Laan and Gruber 2011)</span>. Below we present examples of all these interventions.</p>
+<p>We use the potential outcomes framework to define the causal effect of interest using our established data structure. We consider a hypothetical policy where <span class="math inline">\(\bar{A}\)</span> is set to a regime <span class="math inline">\(d\)</span> defined as <span class="math inline">\(A^{d}_t = d_t(A_t, H^{d}_t)\)</span>, where <span class="math inline">\(H^{d}_t = (\bar{L}_t, \bar{A}^{d}_{t-1})\)</span>, for a set of user-given regimes <span class="math inline">\(d_t:t \in \{1, ..., \tau\}\)</span>. The defining characteristic that makes regime <span class="math inline">\(d_t\)</span> a modified treatment policy is that it depends on the <strong>natural value</strong> of treatment <span class="math inline">\(\bar{A}_t\)</span>, that is, the value that the treatment would have taken under no intervention. However, when the function <span class="math inline">\(d_t\)</span> only depends on <span class="math inline">\(H_t\)</span>, the LMTP reduces to the <em>dynamic treatment regimes</em> studied in the literature. Furthermore, when <span class="math inline">\(d_t\)</span> is a constant that and does not depend on either <span class="math inline">\(A_t\)</span> or <span class="math inline">\(H_t\)</span>, then LMTPs reduce to the conventional static rules studied in the causal inference literature <span class="citation">(Bang and Robins 2005; Mark J. van der Laan and Gruber 2011)</span>. Below we present examples of all these interventions.</p>
 <p>First, consider a study of the effect of physical activity on mortality in the elderly. Assume that each patient is monitored at several time points, and that a measure of physical activity such as the metabolic equivalent of task (MET) <span class="citation">(Mendes et al. 2018)</span> is measured together with a number of lifestyle, health status, and demographic variables. In this setup, a natural question to ask would be &quot;what is the effect on mortality of an intervention that increases physical activity by <span class="math inline">\(\delta\)</span> units for patients whose socioeconomic and health status allows it?’’ Formally, consider a longitudinal study with loss-to-follow-up. Let <span class="math inline">\(A_t = (A_{1, t}, A_{2, t})\)</span> where<span class="math inline">\(A_{1, t}\)</span> equals one if an observation is still in the study at time <span class="math inline">\(t\)</span> and zero otherwise, and <span class="math inline">\(A_{2, t}\)</span> denote a continuous exposure at time <span class="math inline">\(t\)</span> that can be changed through some intervention. A modified treatment policy that increases <span class="math inline">\(A_{2,t}\)</span>, whenever it is feasible to do so, can be defined as</p>
 <p><span class="math display">\[
 \begin{cases}  (1, a_{2,t} + \delta_t) &amp; \text{if } a_{2,t} + \delta_t \leq u_t(h_t)  \\  (1, a_{2,t}) &amp; \text{if } a_{2,t} + \delta_t &gt; u_t(h_t)\end{cases}
@@ -398,8 +230,8 @@ Z_i = (W, L_1, A_1, L_2, A_2, …, L_{\tau}, A_{\tau}, Y_{\tau + 1})
 </div>
 <div id="using-lmtp" class="section level2">
 <h2>Using LMTP</h2>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="kw">library</span>(lmtp)</span>
-<span id="cb1-2"><a href="#cb1-2"></a><span class="co">#&gt; Major changes in lmtp 0.9.0. Consult NEWS.md for more information.</span></span></code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(lmtp)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Major changes in lmtp 0.9.0. Consult NEWS.md for more information.</span></span></code></pre></div>
 <div id="required-data-structure" class="section level3">
 <h3>Required data structure</h3>
 <p>Data is passed to <strong>lmtp</strong> estimators through the <code>data</code> argument. Data should be in wide format with one column per variable per time point under study (i.e., there should be one column for every variable in <span class="math inline">\(Z\)</span>). These columns do not have to be in any specific order and the data set may contain variables that are not used in estimation. The names of treatment variables, censoring variables, baseline covariates, and time-varying covariates are specified using the <code>trt</code>, <code>cens</code>, <code>baseline</code>, and <code>time_vary</code> arguments respectively. The <code>trt</code>, <code>cens</code>, and <code>baseline</code> arguments accept character vectors and the<code>trt</code> and <code>cens</code>arguments should be ordered according to the time-ordering of the data generating mechanism. The <code>time_vary</code>argument accepts an unnamed list ordered according to the time-ordering of the model with each index containing the name of the time-varying covariates for the given time. The outcome variable is specified through the <code>outcome</code> argument.</p>
@@ -409,25 +241,25 @@ Z_i = (W, L_1, A_1, L_2, A_2, …, L_{\tau}, A_{\tau}, Y_{\tau + 1})
 <p><span class="math display">\[
 Z = (W_1, W_2, L_{1, 1}, L_{1, 2}, A_1, L_{2, 1}, L_{2, 2}, A_2, Y_3)
 \]</span>We can translate this data structure to R with</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a>baseline &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;W_1&quot;</span>, <span class="st">&quot;W_2&quot;</span>)</span>
-<span id="cb2-2"><a href="#cb2-2"></a>trt &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;A_1&quot;</span>, <span class="st">&quot;A_2&quot;</span>)</span>
-<span id="cb2-3"><a href="#cb2-3"></a>time_vary &lt;-<span class="st"> </span><span class="kw">list</span>(<span class="kw">c</span>(<span class="st">&quot;L_11&quot;</span>, <span class="st">&quot;L_12&quot;</span>), </span>
-<span id="cb2-4"><a href="#cb2-4"></a>                  <span class="kw">c</span>(<span class="st">&quot;L_21&quot;</span>, <span class="st">&quot;L_22&quot;</span>))</span>
-<span id="cb2-5"><a href="#cb2-5"></a><span class="kw">create_node_list</span>(<span class="dt">trt =</span> trt, <span class="dt">baseline =</span> baseline, <span class="dt">time_vary =</span> time_vary, <span class="dt">tau =</span> <span class="dv">2</span>)</span>
-<span id="cb2-6"><a href="#cb2-6"></a><span class="co">#&gt; $trt</span></span>
-<span id="cb2-7"><a href="#cb2-7"></a><span class="co">#&gt; $trt[[1]]</span></span>
-<span id="cb2-8"><a href="#cb2-8"></a><span class="co">#&gt; [1] &quot;W_1&quot;  &quot;W_2&quot;  &quot;L_11&quot; &quot;L_12&quot; &quot;A_1&quot; </span></span>
-<span id="cb2-9"><a href="#cb2-9"></a><span class="co">#&gt; </span></span>
-<span id="cb2-10"><a href="#cb2-10"></a><span class="co">#&gt; $trt[[2]]</span></span>
-<span id="cb2-11"><a href="#cb2-11"></a><span class="co">#&gt; [1] &quot;W_1&quot;  &quot;W_2&quot;  &quot;L_11&quot; &quot;L_12&quot; &quot;L_21&quot; &quot;L_22&quot; &quot;A_1&quot;  &quot;A_2&quot; </span></span>
-<span id="cb2-12"><a href="#cb2-12"></a><span class="co">#&gt; </span></span>
-<span id="cb2-13"><a href="#cb2-13"></a><span class="co">#&gt; </span></span>
-<span id="cb2-14"><a href="#cb2-14"></a><span class="co">#&gt; $outcome</span></span>
-<span id="cb2-15"><a href="#cb2-15"></a><span class="co">#&gt; $outcome[[1]]</span></span>
-<span id="cb2-16"><a href="#cb2-16"></a><span class="co">#&gt; [1] &quot;W_1&quot;  &quot;W_2&quot;  &quot;L_11&quot; &quot;L_12&quot; &quot;A_1&quot; </span></span>
-<span id="cb2-17"><a href="#cb2-17"></a><span class="co">#&gt; </span></span>
-<span id="cb2-18"><a href="#cb2-18"></a><span class="co">#&gt; $outcome[[2]]</span></span>
-<span id="cb2-19"><a href="#cb2-19"></a><span class="co">#&gt; [1] &quot;W_1&quot;  &quot;W_2&quot;  &quot;L_11&quot; &quot;L_12&quot; &quot;A_1&quot;  &quot;L_21&quot; &quot;L_22&quot; &quot;A_2&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>baseline <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;W_1&quot;</span>, <span class="st">&quot;W_2&quot;</span>)</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>trt <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;A_1&quot;</span>, <span class="st">&quot;A_2&quot;</span>)</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>time_vary <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="fu">c</span>(<span class="st">&quot;L_11&quot;</span>, <span class="st">&quot;L_12&quot;</span>), </span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>                  <span class="fu">c</span>(<span class="st">&quot;L_21&quot;</span>, <span class="st">&quot;L_22&quot;</span>))</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="fu">create_node_list</span>(<span class="at">trt =</span> trt, <span class="at">baseline =</span> baseline, <span class="at">time_vary =</span> time_vary, <span class="at">tau =</span> <span class="dv">2</span>)</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; $trt</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; $trt[[1]]</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;W_1&quot;  &quot;W_2&quot;  &quot;L_11&quot; &quot;L_12&quot; &quot;A_1&quot; </span></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; $trt[[2]]</span></span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;W_1&quot;  &quot;W_2&quot;  &quot;L_11&quot; &quot;L_12&quot; &quot;L_21&quot; &quot;L_22&quot; &quot;A_1&quot;  &quot;A_2&quot; </span></span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; $outcome</span></span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; $outcome[[1]]</span></span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;W_1&quot;  &quot;W_2&quot;  &quot;L_11&quot; &quot;L_12&quot; &quot;A_1&quot; </span></span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; $outcome[[2]]</span></span>
+<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;W_1&quot;  &quot;W_2&quot;  &quot;L_11&quot; &quot;L_12&quot; &quot;A_1&quot;  &quot;L_21&quot; &quot;L_22&quot; &quot;A_2&quot;</span></span></code></pre></div>
 <p>A list of lists is returned with the names of the variables in <span class="math inline">\(H_t\)</span> to be used for estimation of the outcome regression and the treatment mechanism at every time <span class="math inline">\(t\)</span>.  Notice that variables <span class="math inline">\(A_1\)</span> and <span class="math inline">\(A_2\)</span> are included in the list of variables used for estimation of the treatment mechanism. This is due to the fact that the nuisance parameter for the treatment mechanism is the density ratio <span class="math inline">\(r_t\)</span>, which is a function of <span class="math inline">\(A_1\)</span> and <span class="math inline">\(A_2\)</span>.</p>
 <p>The density ratio is estimated based on a classification trick using an auxiliary variable <span class="math inline">\(\Lambda\)</span> as a pseudo outcome and the treatment as a predictor. Specifically, the TMLE and SDR estimation methods require estimation of the ratio of the densities of <span class="math inline">\(A_t^d\)</span> and <span class="math inline">\(A_t\)</span>, conditional on the history <span class="math inline">\(H_t\)</span>, defined as <span class="math inline">\(r_t\)</span> above. This is achieved through computing the odds in a classification problem in an augmented dataset with <span class="math inline">\(2n\)</span> observations where the outcome is the auxiliary variable <span class="math inline">\(\Lambda\)</span> (defined below) and the predictors are the variables <span class="math inline">\(A_t\)</span> and <span class="math inline">\(H_t\)</span>. In the <span class="math inline">\(2n\)</span> augmented data set, the data structure at time <span class="math inline">\(t\)</span> is redefined as</p>
 <p><span class="math display">\[
@@ -442,202 +274,204 @@ r_t(a_t, h_t) = \frac{p^\lambda(a_t, h_t \mid \Lambda =    1)}{p^\lambda(a_t, 
 <div id="creating-treatment-policies" class="section level3">
 <h3>Creating treatment policies</h3>
 <p>Modified treatment policies and deterministic static/dynamic treatment rules are specified using the <code>shift</code> argument, which accepts a user-defined function that returns a vector of exposure values modified according to the policy of interest. Shift functions should take two arguments, the first for specifying a data set and the second for specifying the current exposure variable. For example, a possible MTP may decrease exposure by 1 unit if the natural exposure value was greater than two and do nothing otherwise. A shift function for this MTP would look like</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a>shift &lt;-<span class="st"> </span><span class="cf">function</span>(data, trt) {</span>
-<span id="cb3-2"><a href="#cb3-2"></a>  (data[[trt]] <span class="op">-</span><span class="st"> </span><span class="dv">1</span>) <span class="op">*</span><span class="st"> </span>(data[[trt]] <span class="op">-</span><span class="st"> </span><span class="dv">1</span> <span class="op">&gt;=</span><span class="st"> </span><span class="dv">1</span>) <span class="op">+</span><span class="st"> </span>data[[trt]] <span class="op">*</span><span class="st"> </span>(data[[trt]] <span class="op">-</span><span class="st"> </span><span class="dv">1</span> <span class="op">&lt;</span><span class="st"> </span><span class="dv">1</span>)</span>
-<span id="cb3-3"><a href="#cb3-3"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>mtp <span class="ot">&lt;-</span> <span class="cf">function</span>(data, trt) {</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  (data[[trt]] <span class="sc">-</span> <span class="dv">1</span>) <span class="sc">*</span> (data[[trt]] <span class="sc">-</span> <span class="dv">1</span> <span class="sc">&gt;=</span> <span class="dv">1</span>) <span class="sc">+</span> data[[trt]] <span class="sc">*</span> (data[[trt]] <span class="sc">-</span> <span class="dv">1</span> <span class="sc">&lt;</span> <span class="dv">1</span>)</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
 <p>It is then passed to estimators using the <code>shift</code> argument</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a>A &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;A_1&quot;</span>, <span class="st">&quot;A_2&quot;</span>, <span class="st">&quot;A_3&quot;</span>, <span class="st">&quot;A_4&quot;</span>)</span>
-<span id="cb4-2"><a href="#cb4-2"></a>L &lt;-<span class="st"> </span><span class="kw">list</span>(<span class="kw">c</span>(<span class="st">&quot;L_1&quot;</span>), <span class="kw">c</span>(<span class="st">&quot;L_2&quot;</span>), <span class="kw">c</span>(<span class="st">&quot;L_3&quot;</span>), <span class="kw">c</span>(<span class="st">&quot;L_4&quot;</span>))</span>
-<span id="cb4-3"><a href="#cb4-3"></a><span class="kw">lmtp_sdr</span>(sim_t4, A, <span class="st">&quot;Y&quot;</span>, <span class="dt">time_vary =</span> L, <span class="dt">k =</span> <span class="dv">0</span>, <span class="dt">shift =</span> shift, <span class="dt">folds =</span> <span class="dv">5</span>)</span>
-<span id="cb4-4"><a href="#cb4-4"></a><span class="co">#&gt; LMTP Estimator: SDR</span></span>
-<span id="cb4-5"><a href="#cb4-5"></a><span class="co">#&gt; Trt. Policy: (shift)</span></span>
-<span id="cb4-6"><a href="#cb4-6"></a><span class="co">#&gt; Population intervention effect</span></span>
-<span id="cb4-7"><a href="#cb4-7"></a><span class="co">#&gt; Estimate: 0.26</span></span>
-<span id="cb4-8"><a href="#cb4-8"></a><span class="co">#&gt; Std. error: 0.0184</span></span>
-<span id="cb4-9"><a href="#cb4-9"></a><span class="co">#&gt; 95% CI: (0.224, 0.296)</span></span></code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>A <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;A_1&quot;</span>, <span class="st">&quot;A_2&quot;</span>, <span class="st">&quot;A_3&quot;</span>, <span class="st">&quot;A_4&quot;</span>)</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>L <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="fu">c</span>(<span class="st">&quot;L_1&quot;</span>), <span class="fu">c</span>(<span class="st">&quot;L_2&quot;</span>), <span class="fu">c</span>(<span class="st">&quot;L_3&quot;</span>), <span class="fu">c</span>(<span class="st">&quot;L_4&quot;</span>))</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="fu">lmtp_sdr</span>(sim_t4, A, <span class="st">&quot;Y&quot;</span>, <span class="at">time_vary =</span> L, <span class="at">k =</span> <span class="dv">0</span>, <span class="at">shift =</span> mtp, <span class="at">folds =</span> <span class="dv">5</span>)</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; LMTP Estimator: SDR</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Trt. Policy: (mtp)</span></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Population intervention effect</span></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Estimate: 0.2645</span></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Std. error: 0.0179</span></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 95% CI: (0.2294, 0.2996)</span></span></code></pre></div>
 <p>This framework is flexible and allows for specifying complex treatment regimes that can depend on time and covariates. In the case of a binary exposure, two shift functions are installed with the package: <code>static_binary_on()</code> which sets <span class="math inline">\(A_{i, t} = 1\)</span>, and <code>static_binary_off()</code> which sets <span class="math inline">\(A_{i, t} = 0\)</span>.</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a><span class="cf">if</span> (<span class="kw">require</span>(<span class="st">&quot;twang&quot;</span>, <span class="dt">quietly =</span> <span class="ot">TRUE</span>, <span class="dt">attach.required =</span> <span class="ot">FALSE</span>)) {</span>
-<span id="cb5-2"><a href="#cb5-2"></a>  <span class="kw">data</span>(<span class="st">&quot;iptwExWide&quot;</span>, <span class="dt">package =</span> <span class="st">&quot;twang&quot;</span>)</span>
-<span id="cb5-3"><a href="#cb5-3"></a>  A &lt;-<span class="st"> </span><span class="kw">paste0</span>(<span class="st">&quot;tx&quot;</span>, <span class="dv">1</span><span class="op">:</span><span class="dv">3</span>)</span>
-<span id="cb5-4"><a href="#cb5-4"></a>  W &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;gender&quot;</span>, <span class="st">&quot;age&quot;</span>)</span>
-<span id="cb5-5"><a href="#cb5-5"></a>  L &lt;-<span class="st"> </span><span class="kw">list</span>(<span class="kw">c</span>(<span class="st">&quot;use0&quot;</span>), <span class="kw">c</span>(<span class="st">&quot;use1&quot;</span>), <span class="kw">c</span>(<span class="st">&quot;use2&quot;</span>))</span>
-<span id="cb5-6"><a href="#cb5-6"></a>  <span class="kw">lmtp_tmle</span>(iptwExWide, A, <span class="st">&quot;outcome&quot;</span>, W, L, </span>
-<span id="cb5-7"><a href="#cb5-7"></a>            <span class="dt">shift =</span> static_binary_on, <span class="dt">outcome_type =</span> <span class="st">&quot;continuous&quot;</span>,</span>
-<span id="cb5-8"><a href="#cb5-8"></a>            <span class="dt">folds =</span> <span class="dv">2</span>, <span class="dt">.SL_folds =</span> <span class="dv">2</span>)</span>
-<span id="cb5-9"><a href="#cb5-9"></a>}</span>
-<span id="cb5-10"><a href="#cb5-10"></a><span class="co">#&gt; LMTP Estimator: TMLE</span></span>
-<span id="cb5-11"><a href="#cb5-11"></a><span class="co">#&gt; Trt. Policy: (static_binary_on)</span></span>
-<span id="cb5-12"><a href="#cb5-12"></a><span class="co">#&gt; Population intervention effect</span></span>
-<span id="cb5-13"><a href="#cb5-13"></a><span class="co">#&gt; Estimate: -0.2905</span></span>
-<span id="cb5-14"><a href="#cb5-14"></a><span class="co">#&gt; Std. error: 0.043</span></span>
-<span id="cb5-15"><a href="#cb5-15"></a><span class="co">#&gt; 95% CI: (-0.3747, -0.2063)</span></span></code></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="fu">require</span>(<span class="st">&quot;twang&quot;</span>, <span class="at">quietly =</span> <span class="cn">TRUE</span>, <span class="at">attach.required =</span> <span class="cn">FALSE</span>)) {</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">data</span>(<span class="st">&quot;iptwExWide&quot;</span>, <span class="at">package =</span> <span class="st">&quot;twang&quot;</span>)</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>  A <span class="ot">&lt;-</span> <span class="fu">paste0</span>(<span class="st">&quot;tx&quot;</span>, <span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>)</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>  W <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;gender&quot;</span>, <span class="st">&quot;age&quot;</span>)</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>  L <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="fu">c</span>(<span class="st">&quot;use0&quot;</span>), <span class="fu">c</span>(<span class="st">&quot;use1&quot;</span>), <span class="fu">c</span>(<span class="st">&quot;use2&quot;</span>))</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">lmtp_tmle</span>(iptwExWide, A, <span class="st">&quot;outcome&quot;</span>, W, L, </span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>            <span class="at">shift =</span> static_binary_on, <span class="at">outcome_type =</span> <span class="st">&quot;continuous&quot;</span>,</span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>            <span class="at">folds =</span> <span class="dv">2</span>, <span class="at">.SL_folds =</span> <span class="dv">2</span>)</span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; To reproduce results from prior versions of the twang package, please see the version=&quot;legacy&quot; option described in the documentation.</span></span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; LMTP Estimator: TMLE</span></span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Trt. Policy: (static_binary_on)</span></span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Population intervention effect</span></span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Estimate: -0.2844</span></span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Std. error: 0.0445</span></span>
+<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 95% CI: (-0.3716, -0.1972)</span></span></code></pre></div>
 <p>Dynamic treatment regimes are treatment rules where treatment is applied based on a fixed rule that depends on covariate history. <code>lmtp</code> is capable of estimating the effects of deterministic dynamic treatment rules as well as modified treatment policies that depend on covariate history.</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a>A &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;A_1&quot;</span>, <span class="st">&quot;A_2&quot;</span>, <span class="st">&quot;A_3&quot;</span>, <span class="st">&quot;A_4&quot;</span>)</span>
-<span id="cb6-2"><a href="#cb6-2"></a>L &lt;-<span class="st"> </span><span class="kw">list</span>(<span class="kw">c</span>(<span class="st">&quot;L_1&quot;</span>), <span class="kw">c</span>(<span class="st">&quot;L_2&quot;</span>), <span class="kw">c</span>(<span class="st">&quot;L_3&quot;</span>), <span class="kw">c</span>(<span class="st">&quot;L_4&quot;</span>))</span>
-<span id="cb6-3"><a href="#cb6-3"></a>shift &lt;-<span class="st"> </span><span class="cf">function</span>(data, trt) {</span>
-<span id="cb6-4"><a href="#cb6-4"></a>  (data[[trt]] <span class="op">-</span><span class="st"> </span><span class="dv">1</span>) <span class="op">*</span><span class="st"> </span>(data[[trt]] <span class="op">-</span><span class="st"> </span><span class="dv">1</span> <span class="op">&gt;=</span><span class="st"> </span><span class="dv">1</span>) <span class="op">+</span><span class="st"> </span>data[[trt]] <span class="op">*</span><span class="st"> </span>(data[[trt]] <span class="op">-</span><span class="st"> </span><span class="dv">1</span> <span class="op">&lt;</span><span class="st"> </span><span class="dv">1</span>)</span>
-<span id="cb6-5"><a href="#cb6-5"></a>}</span>
-<span id="cb6-6"><a href="#cb6-6"></a></span>
-<span id="cb6-7"><a href="#cb6-7"></a><span class="co"># creating a dynamic mtp that applies the shift function </span></span>
-<span id="cb6-8"><a href="#cb6-8"></a><span class="co"># but also depends on history and the current time</span></span>
-<span id="cb6-9"><a href="#cb6-9"></a>dynamic_mtp &lt;-<span class="st"> </span><span class="cf">function</span>(data, trt) {</span>
-<span id="cb6-10"><a href="#cb6-10"></a>  <span class="cf">if</span> (trt <span class="op">==</span><span class="st"> &quot;A_1&quot;</span>) {</span>
-<span id="cb6-11"><a href="#cb6-11"></a>    <span class="co"># if its the first time point, follow the same mtp as before</span></span>
-<span id="cb6-12"><a href="#cb6-12"></a>    <span class="kw">shift</span>(data, trt)</span>
-<span id="cb6-13"><a href="#cb6-13"></a>  } <span class="cf">else</span> {</span>
-<span id="cb6-14"><a href="#cb6-14"></a>    <span class="co"># otherwise check if the time varying covariate equals 1</span></span>
-<span id="cb6-15"><a href="#cb6-15"></a>    <span class="kw">ifelse</span>(data[[<span class="kw">sub</span>(<span class="st">&quot;A&quot;</span>, <span class="st">&quot;L&quot;</span>, trt)]] <span class="op">==</span><span class="st"> </span><span class="dv">1</span>, </span>
-<span id="cb6-16"><a href="#cb6-16"></a>           <span class="kw">shift</span>(data, trt), <span class="co"># if yes continue with the policy</span></span>
-<span id="cb6-17"><a href="#cb6-17"></a>           data[[trt]])      <span class="co"># otherwise do nothing</span></span>
-<span id="cb6-18"><a href="#cb6-18"></a>  }</span>
-<span id="cb6-19"><a href="#cb6-19"></a>}</span>
-<span id="cb6-20"><a href="#cb6-20"></a></span>
-<span id="cb6-21"><a href="#cb6-21"></a><span class="kw">lmtp_tmle</span>(sim_t4, A, <span class="st">&quot;Y&quot;</span>, <span class="dt">time_vary =</span> L, <span class="dt">k =</span> <span class="dv">0</span>, </span>
-<span id="cb6-22"><a href="#cb6-22"></a>          <span class="dt">shift =</span> dynamic_mtp, <span class="dt">folds =</span> <span class="dv">2</span>, <span class="dt">.SL_folds =</span> <span class="dv">2</span>)</span>
-<span id="cb6-23"><a href="#cb6-23"></a><span class="co">#&gt; LMTP Estimator: TMLE</span></span>
-<span id="cb6-24"><a href="#cb6-24"></a><span class="co">#&gt; Trt. Policy: (dynamic_mtp)</span></span>
-<span id="cb6-25"><a href="#cb6-25"></a><span class="co">#&gt; Population intervention effect</span></span>
-<span id="cb6-26"><a href="#cb6-26"></a><span class="co">#&gt; Estimate: 0.2369</span></span>
-<span id="cb6-27"><a href="#cb6-27"></a><span class="co">#&gt; Std. error: 0.0111</span></span>
-<span id="cb6-28"><a href="#cb6-28"></a><span class="co">#&gt; 95% CI: (0.2151, 0.2587)</span></span></code></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>A <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;A_1&quot;</span>, <span class="st">&quot;A_2&quot;</span>, <span class="st">&quot;A_3&quot;</span>, <span class="st">&quot;A_4&quot;</span>)</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>L <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="fu">c</span>(<span class="st">&quot;L_1&quot;</span>), <span class="fu">c</span>(<span class="st">&quot;L_2&quot;</span>), <span class="fu">c</span>(<span class="st">&quot;L_3&quot;</span>), <span class="fu">c</span>(<span class="st">&quot;L_4&quot;</span>))</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="co"># creating a dynamic mtp that applies the shift function </span></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="co"># but also depends on history and the current time</span></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>dynamic_mtp <span class="ot">&lt;-</span> <span class="cf">function</span>(data, trt) {</span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>  mtp <span class="ot">&lt;-</span> <span class="cf">function</span>(data, trt) {</span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>    (data[[trt]] <span class="sc">-</span> <span class="dv">1</span>) <span class="sc">*</span> (data[[trt]] <span class="sc">-</span> <span class="dv">1</span> <span class="sc">&gt;=</span> <span class="dv">1</span>) <span class="sc">+</span> data[[trt]] <span class="sc">*</span> (data[[trt]] <span class="sc">-</span> <span class="dv">1</span> <span class="sc">&lt;</span> <span class="dv">1</span>)</span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>  <span class="co"># if its the first time point, follow the same mtp as before</span></span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (trt <span class="sc">==</span> <span class="st">&quot;A_1&quot;</span>) <span class="fu">return</span>(<span class="fu">mtp</span>(data, trt))</span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a>  <span class="co"># otherwise check if the time varying covariate equals 1</span></span>
+<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ifelse</span>(</span>
+<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a>    data[[<span class="fu">sub</span>(<span class="st">&quot;A&quot;</span>, <span class="st">&quot;L&quot;</span>, trt)]] <span class="sc">==</span> <span class="dv">1</span>, </span>
+<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mtp</span>(data, trt), <span class="co"># if yes continue with the policy</span></span>
+<span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a>    data[[trt]]     <span class="co"># otherwise do nothing</span></span>
+<span id="cb6-19"><a href="#cb6-19" aria-hidden="true" tabindex="-1"></a>  )      </span>
+<span id="cb6-20"><a href="#cb6-20" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb6-21"><a href="#cb6-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-22"><a href="#cb6-22" aria-hidden="true" tabindex="-1"></a><span class="fu">lmtp_tmle</span>(sim_t4, A, <span class="st">&quot;Y&quot;</span>, <span class="at">time_vary =</span> L, <span class="at">k =</span> <span class="dv">0</span>, </span>
+<span id="cb6-23"><a href="#cb6-23" aria-hidden="true" tabindex="-1"></a>          <span class="at">shift =</span> dynamic_mtp, <span class="at">folds =</span> <span class="dv">2</span>, <span class="at">.SL_folds =</span> <span class="dv">2</span>)</span>
+<span id="cb6-24"><a href="#cb6-24" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; LMTP Estimator: TMLE</span></span>
+<span id="cb6-25"><a href="#cb6-25" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Trt. Policy: (dynamic_mtp)</span></span>
+<span id="cb6-26"><a href="#cb6-26" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Population intervention effect</span></span>
+<span id="cb6-27"><a href="#cb6-27" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Estimate: 0.2359</span></span>
+<span id="cb6-28"><a href="#cb6-28" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Std. error: 0.011</span></span>
+<span id="cb6-29"><a href="#cb6-29" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 95% CI: (0.2143, 0.2575)</span></span></code></pre></div>
 </div>
 <div id="superlearner" class="section level3">
 <h3>SuperLearner</h3>
-<p>An attractive property of multiply-robust estimators is that they can incorporate flexible machine-learning algorithms for the estimation of nuisance parameters <span class="math inline">\(Q_t\)</span> and <span class="math inline">\(r_t\)</span> while remaining <span class="math inline">\(\sqrt{n}\)</span>-consistent. The super learner algorithm is an ensemble learner than incorporates a set of candidate models through a weighted convex-combination based on cross-validation <span class="citation">(Laan, Polley, and Hubbard 2007)</span>. Asymptotically, this weighted combination of models will outperform any single one of its components.</p>
+<p>An attractive property of multiply-robust estimators is that they can incorporate flexible machine-learning algorithms for the estimation of nuisance parameters <span class="math inline">\(Q_t\)</span> and <span class="math inline">\(r_t\)</span> while remaining <span class="math inline">\(\sqrt{n}\)</span>-consistent. The super learner algorithm is an ensemble learner than incorporates a set of candidate models through a weighted convex-combination based on cross-validation <span class="citation">(Mark J. van der Laan, Polley, and Hubbard 2007)</span>. Asymptotically, this weighted combination of models will outperform any single one of its components.</p>
 <p><strong>lmtp</strong> uses the implementation of the super learner provided by the <strong>SuperLearner</strong> package <span class="citation">(Polley et al. 2019)</span>. Analysts must specify a vector of <strong>SuperLearner</strong> prediction algorithms which are then included in <code>lmtp_tmle()</code> and <code>lmtp_sdr()</code> calls with the <code>learners_trt</code> and <code>learners_outcome</code> arguments. The outcome variable type should guide users on selecting the appropriate candidate learners for use with the <code>learners_outcome</code> argument. Regardless of whether an exposure is continuous, dichotomous, or categorical, the exposure mechanism is estimated using classification as discussed above, users should thus only include candidate learners capable of binary classification with the <code>learners_trt</code> argument. If <code>learners_outcome</code> and <code>learners_trt</code> aren’t specified, estimation will be conducted using a main-effects generalized linear model.</p>
 <p>Candidate learners that rely on cross-validation for the tuning of hyper-parameters should support grouped data if used with <code>learners_trt</code>. Because estimation of the treatment mechanism relies on the augmented <span class="math inline">\(2n\)</span> duplicated data set, duplicated observations must be put into the same fold during sample-splitting. This is done automatically by the package.</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a><span class="cf">if</span> (<span class="kw">require</span>(<span class="st">&quot;ranger&quot;</span>, <span class="dt">quietly =</span> <span class="ot">TRUE</span>, <span class="dt">attach.required =</span> <span class="ot">FALSE</span>) <span class="op">&amp;&amp;</span><span class="st"> </span></span>
-<span id="cb7-2"><a href="#cb7-2"></a><span class="st">    </span><span class="kw">require</span>(<span class="st">&quot;twang&quot;</span>, <span class="dt">quietly =</span> <span class="ot">TRUE</span>, <span class="dt">attach.required =</span> <span class="ot">FALSE</span>)) {</span>
-<span id="cb7-3"><a href="#cb7-3"></a>  <span class="kw">data</span>(<span class="st">&quot;iptwExWide&quot;</span>, <span class="dt">package =</span> <span class="st">&quot;twang&quot;</span>)</span>
-<span id="cb7-4"><a href="#cb7-4"></a>  A &lt;-<span class="st"> </span><span class="kw">paste0</span>(<span class="st">&quot;tx&quot;</span>, <span class="dv">1</span><span class="op">:</span><span class="dv">3</span>)</span>
-<span id="cb7-5"><a href="#cb7-5"></a>  W &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;gender&quot;</span>, <span class="st">&quot;age&quot;</span>)</span>
-<span id="cb7-6"><a href="#cb7-6"></a>  L &lt;-<span class="st"> </span><span class="kw">list</span>(<span class="kw">c</span>(<span class="st">&quot;use0&quot;</span>), <span class="kw">c</span>(<span class="st">&quot;use1&quot;</span>), <span class="kw">c</span>(<span class="st">&quot;use2&quot;</span>))</span>
-<span id="cb7-7"><a href="#cb7-7"></a>  lrnrs &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;SL.glm&quot;</span>, <span class="st">&quot;SL.ranger&quot;</span>, <span class="st">&quot;SL.glm.interaction&quot;</span>)</span>
-<span id="cb7-8"><a href="#cb7-8"></a>  <span class="kw">lmtp_tmle</span>(iptwExWide, A, <span class="st">&quot;outcome&quot;</span>, W, L, <span class="dt">shift =</span> static_binary_on, </span>
-<span id="cb7-9"><a href="#cb7-9"></a>            <span class="dt">outcome_type =</span> <span class="st">&quot;continuous&quot;</span>, <span class="dt">learners_trt =</span> lrnrs, </span>
-<span id="cb7-10"><a href="#cb7-10"></a>            <span class="dt">learners_outcome =</span> lrnrs, <span class="dt">folds =</span> <span class="dv">2</span>, <span class="dt">.SL_folds =</span> <span class="dv">2</span>)</span>
-<span id="cb7-11"><a href="#cb7-11"></a>}</span>
-<span id="cb7-12"><a href="#cb7-12"></a><span class="co">#&gt; LMTP Estimator: TMLE</span></span>
-<span id="cb7-13"><a href="#cb7-13"></a><span class="co">#&gt; Trt. Policy: (static_binary_on)</span></span>
-<span id="cb7-14"><a href="#cb7-14"></a><span class="co">#&gt; Population intervention effect</span></span>
-<span id="cb7-15"><a href="#cb7-15"></a><span class="co">#&gt; Estimate: -0.2828</span></span>
-<span id="cb7-16"><a href="#cb7-16"></a><span class="co">#&gt; Std. error: 0.0457</span></span>
-<span id="cb7-17"><a href="#cb7-17"></a><span class="co">#&gt; 95% CI: (-0.3723, -0.1932)</span></span></code></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="fu">require</span>(<span class="st">&quot;ranger&quot;</span>, <span class="at">quietly =</span> <span class="cn">TRUE</span>, <span class="at">attach.required =</span> <span class="cn">FALSE</span>) <span class="sc">&amp;&amp;</span> </span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">require</span>(<span class="st">&quot;twang&quot;</span>, <span class="at">quietly =</span> <span class="cn">TRUE</span>, <span class="at">attach.required =</span> <span class="cn">FALSE</span>)) {</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">data</span>(<span class="st">&quot;iptwExWide&quot;</span>, <span class="at">package =</span> <span class="st">&quot;twang&quot;</span>)</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>  A <span class="ot">&lt;-</span> <span class="fu">paste0</span>(<span class="st">&quot;tx&quot;</span>, <span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>)</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>  W <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;gender&quot;</span>, <span class="st">&quot;age&quot;</span>)</span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>  L <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="fu">c</span>(<span class="st">&quot;use0&quot;</span>), <span class="fu">c</span>(<span class="st">&quot;use1&quot;</span>), <span class="fu">c</span>(<span class="st">&quot;use2&quot;</span>))</span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>  lrnrs <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;SL.glm&quot;</span>, <span class="st">&quot;SL.ranger&quot;</span>, <span class="st">&quot;SL.glm.interaction&quot;</span>)</span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">lmtp_tmle</span>(iptwExWide, A, <span class="st">&quot;outcome&quot;</span>, W, L, <span class="at">shift =</span> static_binary_on, </span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>            <span class="at">outcome_type =</span> <span class="st">&quot;continuous&quot;</span>, <span class="at">learners_trt =</span> lrnrs, </span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>            <span class="at">learners_outcome =</span> lrnrs, <span class="at">folds =</span> <span class="dv">2</span>, <span class="at">.SL_folds =</span> <span class="dv">2</span>)</span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; LMTP Estimator: TMLE</span></span>
+<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Trt. Policy: (static_binary_on)</span></span>
+<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Population intervention effect</span></span>
+<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Estimate: -0.2889</span></span>
+<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Std. error: 0.0423</span></span>
+<span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 95% CI: (-0.3718, -0.206)</span></span></code></pre></div>
 </div>
 <div id="censored-outcomes" class="section level3">
 <h3>Censored outcomes</h3>
 <p>In the case of missing outcomes, <strong>lmtp</strong> can estimate the effect of a hypothetical treatment regime where all observations remained uncensored at end of follow-up. To do this, the user must supply a vector containing the names of censoring indicators for each treatment time point to <strong>lmtp</strong> estimators through the <code>cens</code> argument. Censoring nodes should be defined such that at any time <span class="math inline">\(t\)</span>, if an observation is observed at time <span class="math inline">\(t + 1\)</span> they receive a 1 and a 0 otherwise.</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1"></a><span class="kw">head</span>(sim_cens[sim_cens<span class="op">$</span>C1 <span class="op">==</span><span class="st"> </span><span class="dv">0</span>, ])</span>
-<span id="cb8-2"><a href="#cb8-2"></a><span class="co">#&gt;     L1       A1 C1 L2 A2 C2  Y</span></span>
-<span id="cb8-3"><a href="#cb8-3"></a><span class="co">#&gt; 48   1 3.260499  0 NA NA  0 NA</span></span>
-<span id="cb8-4"><a href="#cb8-4"></a><span class="co">#&gt; 58   1 1.109737  0 NA NA  0 NA</span></span>
-<span id="cb8-5"><a href="#cb8-5"></a><span class="co">#&gt; 67   1 1.376540  0 NA NA  0 NA</span></span>
-<span id="cb8-6"><a href="#cb8-6"></a><span class="co">#&gt; 112  1 3.832451  0 NA NA  0 NA</span></span>
-<span id="cb8-7"><a href="#cb8-7"></a><span class="co">#&gt; 114  1 1.241776  0 NA NA  0 NA</span></span>
-<span id="cb8-8"><a href="#cb8-8"></a><span class="co">#&gt; 115  1 2.390811  0 NA NA  0 NA</span></span></code></pre></div>
-<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1"></a>A &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;A1&quot;</span>, <span class="st">&quot;A2&quot;</span>)</span>
-<span id="cb9-2"><a href="#cb9-2"></a>L &lt;-<span class="st"> </span><span class="kw">list</span>(<span class="kw">c</span>(<span class="st">&quot;L1&quot;</span>), <span class="kw">c</span>(<span class="st">&quot;L2&quot;</span>))</span>
-<span id="cb9-3"><a href="#cb9-3"></a>C &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;C1&quot;</span>, <span class="st">&quot;C2&quot;</span>)</span>
-<span id="cb9-4"><a href="#cb9-4"></a></span>
-<span id="cb9-5"><a href="#cb9-5"></a><span class="kw">lmtp_tmle</span>(sim_cens, A, <span class="st">&quot;Y&quot;</span>, <span class="dt">time_vary =</span> L, <span class="dt">cens =</span> C,</span>
-<span id="cb9-6"><a href="#cb9-6"></a>          <span class="dt">shift =</span> <span class="cf">function</span>(data, trt) data[[trt]] <span class="op">+</span><span class="st"> </span><span class="fl">0.5</span>, </span>
-<span id="cb9-7"><a href="#cb9-7"></a>          <span class="dt">folds =</span> <span class="dv">2</span>, <span class="dt">.SL_folds =</span> <span class="dv">2</span>)</span>
-<span id="cb9-8"><a href="#cb9-8"></a><span class="co">#&gt; LMTP Estimator: TMLE</span></span>
-<span id="cb9-9"><a href="#cb9-9"></a><span class="co">#&gt; Trt. Policy: (function(data, trt) data[[trt]] + 0.5)</span></span>
-<span id="cb9-10"><a href="#cb9-10"></a><span class="co">#&gt; Population intervention effect</span></span>
-<span id="cb9-11"><a href="#cb9-11"></a><span class="co">#&gt; Estimate: 0.8986</span></span>
-<span id="cb9-12"><a href="#cb9-12"></a><span class="co">#&gt; Std. error: 0.0095</span></span>
-<span id="cb9-13"><a href="#cb9-13"></a><span class="co">#&gt; 95% CI: (0.88, 0.9172)</span></span></code></pre></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(sim_cens[sim_cens<span class="sc">$</span>C1 <span class="sc">==</span> <span class="dv">0</span>, ])</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     L1       A1 C1 L2 A2 C2  Y</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 48   1 3.260499  0 NA NA  0 NA</span></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 58   1 1.109737  0 NA NA  0 NA</span></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 67   1 1.376540  0 NA NA  0 NA</span></span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 112  1 3.832451  0 NA NA  0 NA</span></span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 114  1 1.241776  0 NA NA  0 NA</span></span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 115  1 2.390811  0 NA NA  0 NA</span></span></code></pre></div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>A <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;A1&quot;</span>, <span class="st">&quot;A2&quot;</span>)</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>L <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="fu">c</span>(<span class="st">&quot;L1&quot;</span>), <span class="fu">c</span>(<span class="st">&quot;L2&quot;</span>))</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>C <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;C1&quot;</span>, <span class="st">&quot;C2&quot;</span>)</span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a><span class="fu">lmtp_tmle</span>(sim_cens, A, <span class="st">&quot;Y&quot;</span>, <span class="at">time_vary =</span> L, <span class="at">cens =</span> C,</span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>          <span class="at">shift =</span> <span class="cf">function</span>(data, trt) data[[trt]] <span class="sc">+</span> <span class="fl">0.5</span>, </span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>          <span class="at">folds =</span> <span class="dv">2</span>, <span class="at">.SL_folds =</span> <span class="dv">2</span>)</span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; LMTP Estimator: TMLE</span></span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Trt. Policy: (function(data, trt) data[[trt]] + 0.5)</span></span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Population intervention effect</span></span>
+<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Estimate: 0.8979</span></span>
+<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Std. error: 0.0095</span></span>
+<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 95% CI: (0.8794, 0.9165)</span></span></code></pre></div>
 </div>
 <div id="population-mean-outcome" class="section level3">
 <h3>Population mean outcome</h3>
 <p>In certain situations, the user may be interested in the population mean outcome under no intervention. In the presence of censoring, this can be estimated by setting <code>shift = NULL</code> and providing censoring indicators.</p>
-<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1"></a>A &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;A1&quot;</span>, <span class="st">&quot;A2&quot;</span>)</span>
-<span id="cb10-2"><a href="#cb10-2"></a>L &lt;-<span class="st"> </span><span class="kw">list</span>(<span class="kw">c</span>(<span class="st">&quot;L1&quot;</span>), <span class="kw">c</span>(<span class="st">&quot;L2&quot;</span>))</span>
-<span id="cb10-3"><a href="#cb10-3"></a>C &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;C1&quot;</span>, <span class="st">&quot;C2&quot;</span>)</span>
-<span id="cb10-4"><a href="#cb10-4"></a></span>
-<span id="cb10-5"><a href="#cb10-5"></a><span class="kw">lmtp_sdr</span>(sim_cens, A, <span class="st">&quot;Y&quot;</span>, <span class="dt">time_vary =</span> L, <span class="dt">cens =</span> C, </span>
-<span id="cb10-6"><a href="#cb10-6"></a>         <span class="dt">shift =</span> <span class="ot">NULL</span>, <span class="dt">folds =</span> <span class="dv">2</span>, <span class="dt">.SL_folds =</span> <span class="dv">2</span>)</span>
-<span id="cb10-7"><a href="#cb10-7"></a><span class="co">#&gt; LMTP Estimator: SDR</span></span>
-<span id="cb10-8"><a href="#cb10-8"></a><span class="co">#&gt; Trt. Policy: (NULL)</span></span>
-<span id="cb10-9"><a href="#cb10-9"></a><span class="co">#&gt; Population intervention effect</span></span>
-<span id="cb10-10"><a href="#cb10-10"></a><span class="co">#&gt; Estimate: 0.7981</span></span>
-<span id="cb10-11"><a href="#cb10-11"></a><span class="co">#&gt; Std. error: 0.0129</span></span>
-<span id="cb10-12"><a href="#cb10-12"></a><span class="co">#&gt; 95% CI: (0.7727, 0.8235)</span></span></code></pre></div>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>A <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;A1&quot;</span>, <span class="st">&quot;A2&quot;</span>)</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>L <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="fu">c</span>(<span class="st">&quot;L1&quot;</span>), <span class="fu">c</span>(<span class="st">&quot;L2&quot;</span>))</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>C <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;C1&quot;</span>, <span class="st">&quot;C2&quot;</span>)</span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a><span class="fu">lmtp_sdr</span>(sim_cens, A, <span class="st">&quot;Y&quot;</span>, <span class="at">time_vary =</span> L, <span class="at">cens =</span> C, </span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>         <span class="at">shift =</span> <span class="cn">NULL</span>, <span class="at">folds =</span> <span class="dv">2</span>, <span class="at">.SL_folds =</span> <span class="dv">2</span>)</span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; LMTP Estimator: SDR</span></span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Trt. Policy: (NULL)</span></span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Population intervention effect</span></span>
+<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Estimate: 0.7989</span></span>
+<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Std. error: 0.0129</span></span>
+<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 95% CI: (0.7735, 0.8242)</span></span></code></pre></div>
 </div>
 <div id="survival-analysis" class="section level3">
 <h3>Survival analysis</h3>
 <p>For a time-to-event analysis, the <code>outcome</code> argument should be provided a vector containing the names of intermediate outcome variables as well as the final outcome variable; the <code>outcome_type</code> argument should be set to <code>&quot;survival&quot;</code>. The intermediate outcome variables serve as indicators for when an observation experiences the event before the end of follow-up. If an observation does experience the event before the final outcome time, all future outcome variables (including the final outcome) variable should be set to 1. The function <code>event_locf()</code> (last observation carried forward, only for events) is provided to help with this imputation. <strong>Survival probability, NOT cumulative incidence, is estimated.</strong></p>
 <p>Time-to-event analyses are supported for both time-invariant…</p>
-<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1"></a>A &lt;-<span class="st"> &quot;trt&quot;</span></span>
-<span id="cb11-2"><a href="#cb11-2"></a>Y &lt;-<span class="st"> </span><span class="kw">paste0</span>(<span class="st">&quot;Y.&quot;</span>, <span class="dv">1</span><span class="op">:</span><span class="dv">6</span>)</span>
-<span id="cb11-3"><a href="#cb11-3"></a>C &lt;-<span class="st"> </span><span class="kw">paste0</span>(<span class="st">&quot;C.&quot;</span>, <span class="dv">0</span><span class="op">:</span><span class="dv">5</span>)</span>
-<span id="cb11-4"><a href="#cb11-4"></a>W &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;W1&quot;</span>, <span class="st">&quot;W2&quot;</span>)</span>
-<span id="cb11-5"><a href="#cb11-5"></a></span>
-<span id="cb11-6"><a href="#cb11-6"></a><span class="kw">lmtp_tmle</span>(sim_point_surv, A, Y, W, <span class="dt">cens =</span> C, <span class="dt">shift =</span> static_binary_on, </span>
-<span id="cb11-7"><a href="#cb11-7"></a>          <span class="dt">outcome_type =</span> <span class="st">&quot;survival&quot;</span>, <span class="dt">folds =</span> <span class="dv">2</span>, <span class="dt">.SL_folds =</span> <span class="dv">2</span>)</span>
-<span id="cb11-8"><a href="#cb11-8"></a><span class="co">#&gt; LMTP Estimator: TMLE</span></span>
-<span id="cb11-9"><a href="#cb11-9"></a><span class="co">#&gt; Trt. Policy: (static_binary_on)</span></span>
-<span id="cb11-10"><a href="#cb11-10"></a><span class="co">#&gt; Population intervention effect</span></span>
-<span id="cb11-11"><a href="#cb11-11"></a><span class="co">#&gt; Estimate: 0.1874</span></span>
-<span id="cb11-12"><a href="#cb11-12"></a><span class="co">#&gt; Std. error: 0.0186</span></span>
-<span id="cb11-13"><a href="#cb11-13"></a><span class="co">#&gt; 95% CI: (0.151, 0.2238)</span></span></code></pre></div>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>A <span class="ot">&lt;-</span> <span class="st">&quot;trt&quot;</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>Y <span class="ot">&lt;-</span> <span class="fu">paste0</span>(<span class="st">&quot;Y.&quot;</span>, <span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>)</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>C <span class="ot">&lt;-</span> <span class="fu">paste0</span>(<span class="st">&quot;C.&quot;</span>, <span class="dv">0</span><span class="sc">:</span><span class="dv">5</span>)</span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>W <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;W1&quot;</span>, <span class="st">&quot;W2&quot;</span>)</span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a><span class="fu">lmtp_tmle</span>(sim_point_surv, A, Y, W, <span class="at">cens =</span> C, <span class="at">shift =</span> static_binary_on, </span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>          <span class="at">outcome_type =</span> <span class="st">&quot;survival&quot;</span>, <span class="at">folds =</span> <span class="dv">2</span>, <span class="at">.SL_folds =</span> <span class="dv">2</span>)</span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; LMTP Estimator: TMLE</span></span>
+<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Trt. Policy: (static_binary_on)</span></span>
+<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Population intervention effect</span></span>
+<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Estimate: 0.1858</span></span>
+<span id="cb11-12"><a href="#cb11-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Std. error: 0.0184</span></span>
+<span id="cb11-13"><a href="#cb11-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 95% CI: (0.1498, 0.2218)</span></span></code></pre></div>
 <p>…and time-varying exposures.</p>
-<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1"></a>W &lt;-<span class="st"> &quot;L0.c&quot;</span></span>
-<span id="cb12-2"><a href="#cb12-2"></a>L &lt;-<span class="st"> </span><span class="kw">list</span>(<span class="kw">c</span>(<span class="st">&quot;L0.a&quot;</span>, <span class="st">&quot;L0.b&quot;</span>), <span class="kw">c</span>(<span class="st">&quot;L1.a&quot;</span>, <span class="st">&quot;L1.b&quot;</span>))</span>
-<span id="cb12-3"><a href="#cb12-3"></a>A &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;A0&quot;</span>, <span class="st">&quot;A1&quot;</span>)</span>
-<span id="cb12-4"><a href="#cb12-4"></a>C &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;C0&quot;</span>, <span class="st">&quot;C1&quot;</span>)</span>
-<span id="cb12-5"><a href="#cb12-5"></a>Y &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Y1&quot;</span>, <span class="st">&quot;Y2&quot;</span>)</span>
-<span id="cb12-6"><a href="#cb12-6"></a></span>
-<span id="cb12-7"><a href="#cb12-7"></a><span class="kw">lmtp_sdr</span>(sim_timevary_surv, A, Y, W, L, C, <span class="dt">outcome_type =</span> <span class="st">&quot;survival&quot;</span>, </span>
-<span id="cb12-8"><a href="#cb12-8"></a>         <span class="dt">shift =</span> static_binary_on, <span class="dt">folds =</span> <span class="dv">2</span>, <span class="dt">.SL_folds =</span> <span class="dv">2</span>)</span>
-<span id="cb12-9"><a href="#cb12-9"></a><span class="co">#&gt; LMTP Estimator: SDR</span></span>
-<span id="cb12-10"><a href="#cb12-10"></a><span class="co">#&gt; Trt. Policy: (static_binary_on)</span></span>
-<span id="cb12-11"><a href="#cb12-11"></a><span class="co">#&gt; Population intervention effect</span></span>
-<span id="cb12-12"><a href="#cb12-12"></a><span class="co">#&gt; Estimate: 0.7509</span></span>
-<span id="cb12-13"><a href="#cb12-13"></a><span class="co">#&gt; Std. error: 0.0432</span></span>
-<span id="cb12-14"><a href="#cb12-14"></a><span class="co">#&gt; 95% CI: (0.6662, 0.8356)</span></span></code></pre></div>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>W <span class="ot">&lt;-</span> <span class="st">&quot;L0.c&quot;</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>L <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="fu">c</span>(<span class="st">&quot;L0.a&quot;</span>, <span class="st">&quot;L0.b&quot;</span>), <span class="fu">c</span>(<span class="st">&quot;L1.a&quot;</span>, <span class="st">&quot;L1.b&quot;</span>))</span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>A <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;A0&quot;</span>, <span class="st">&quot;A1&quot;</span>)</span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>C <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;C0&quot;</span>, <span class="st">&quot;C1&quot;</span>)</span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>Y <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;Y1&quot;</span>, <span class="st">&quot;Y2&quot;</span>)</span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a><span class="fu">lmtp_sdr</span>(sim_timevary_surv, A, Y, W, L, C, <span class="at">outcome_type =</span> <span class="st">&quot;survival&quot;</span>, </span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a>         <span class="at">shift =</span> static_binary_on, <span class="at">folds =</span> <span class="dv">2</span>, <span class="at">.SL_folds =</span> <span class="dv">2</span>)</span>
+<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; LMTP Estimator: SDR</span></span>
+<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Trt. Policy: (static_binary_on)</span></span>
+<span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Population intervention effect</span></span>
+<span id="cb12-12"><a href="#cb12-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Estimate: 0.7968</span></span>
+<span id="cb12-13"><a href="#cb12-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Std. error: 0.0573</span></span>
+<span id="cb12-14"><a href="#cb12-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 95% CI: (0.6844, 0.9091)</span></span></code></pre></div>
 </div>
 <div id="contrasts" class="section level3">
 <h3>Contrasts</h3>
 <p>The effects returned by <strong>lmtp</strong> estimators are population intervention effects, that is the expected mean outcome in the population under the hypothetical intervention. Often, however, we are also interested in the comparison of different interventions to each other or to no intervention at all. This is the role of <code>lmtp_contrast()</code>.</p>
-<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1"></a>A &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;A1&quot;</span>, <span class="st">&quot;A2&quot;</span>)</span>
-<span id="cb13-2"><a href="#cb13-2"></a>L &lt;-<span class="st"> </span><span class="kw">list</span>(<span class="kw">c</span>(<span class="st">&quot;L1&quot;</span>), <span class="kw">c</span>(<span class="st">&quot;L2&quot;</span>))</span>
-<span id="cb13-3"><a href="#cb13-3"></a>C &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;C1&quot;</span>, <span class="st">&quot;C2&quot;</span>)</span>
-<span id="cb13-4"><a href="#cb13-4"></a></span>
-<span id="cb13-5"><a href="#cb13-5"></a>fit_shift &lt;-<span class="st"> </span></span>
-<span id="cb13-6"><a href="#cb13-6"></a><span class="st">  </span><span class="kw">lmtp_sdr</span>(sim_cens, A, <span class="st">&quot;Y&quot;</span>, <span class="dt">time_vary =</span> L, <span class="dt">cens =</span> C, </span>
-<span id="cb13-7"><a href="#cb13-7"></a>           <span class="dt">shift =</span> <span class="cf">function</span>(data, trt) data[[trt]] <span class="op">+</span><span class="st"> </span><span class="fl">0.5</span>, </span>
-<span id="cb13-8"><a href="#cb13-8"></a>           <span class="dt">folds =</span> <span class="dv">2</span>, <span class="dt">.SL_folds =</span> <span class="dv">2</span>)</span>
-<span id="cb13-9"><a href="#cb13-9"></a></span>
-<span id="cb13-10"><a href="#cb13-10"></a>fit_noshift &lt;-<span class="st"> </span></span>
-<span id="cb13-11"><a href="#cb13-11"></a><span class="st">  </span><span class="kw">lmtp_sdr</span>(sim_cens, A, <span class="st">&quot;Y&quot;</span>, <span class="dt">time_vary =</span> L, <span class="dt">cens =</span> C,</span>
-<span id="cb13-12"><a href="#cb13-12"></a>           <span class="dt">shift =</span> <span class="ot">NULL</span>, <span class="dt">folds =</span> <span class="dv">2</span>, <span class="dt">.SL_folds =</span> <span class="dv">2</span>)</span></code></pre></div>
-<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1"></a><span class="kw">lmtp_contrast</span>(fit_shift, <span class="dt">ref =</span> fit_noshift, <span class="dt">type =</span> <span class="st">&quot;additive&quot;</span>)</span>
-<span id="cb14-2"><a href="#cb14-2"></a><span class="co">#&gt; LMTP Contrast: additive</span></span>
-<span id="cb14-3"><a href="#cb14-3"></a><span class="co">#&gt; Null hypothesis: theta == 0</span></span>
-<span id="cb14-4"><a href="#cb14-4"></a><span class="co">#&gt; </span></span>
-<span id="cb14-5"><a href="#cb14-5"></a><span class="co">#&gt;   </span></span>
-<span id="cb14-6"><a href="#cb14-6"></a><span class="co">#&gt;   theta shift   ref std.error conf.low conf.high p.value</span></span>
-<span id="cb14-7"><a href="#cb14-7"></a><span class="co">#&gt; 1 0.102 0.899 0.797   0.00574   0.0906     0.113  &lt;0.001</span></span></code></pre></div>
-<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1"></a><span class="kw">lmtp_contrast</span>(fit_shift, <span class="dt">ref =</span> fit_noshift, <span class="dt">type =</span> <span class="st">&quot;rr&quot;</span>)</span>
-<span id="cb15-2"><a href="#cb15-2"></a><span class="co">#&gt; LMTP Contrast: relative risk</span></span>
-<span id="cb15-3"><a href="#cb15-3"></a><span class="co">#&gt; Null hypothesis: theta == 1</span></span>
-<span id="cb15-4"><a href="#cb15-4"></a><span class="co">#&gt; </span></span>
-<span id="cb15-5"><a href="#cb15-5"></a><span class="co">#&gt;   </span></span>
-<span id="cb15-6"><a href="#cb15-6"></a><span class="co">#&gt;   theta shift   ref std.error conf.low conf.high p.value</span></span>
-<span id="cb15-7"><a href="#cb15-7"></a><span class="co">#&gt; 1  1.13 0.899 0.797   0.00779     1.11      1.15  &lt;0.001</span></span></code></pre></div>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>A <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;A1&quot;</span>, <span class="st">&quot;A2&quot;</span>)</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>L <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="fu">c</span>(<span class="st">&quot;L1&quot;</span>), <span class="fu">c</span>(<span class="st">&quot;L2&quot;</span>))</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>C <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;C1&quot;</span>, <span class="st">&quot;C2&quot;</span>)</span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>fit_shift <span class="ot">&lt;-</span> </span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">lmtp_sdr</span>(sim_cens, A, <span class="st">&quot;Y&quot;</span>, <span class="at">time_vary =</span> L, <span class="at">cens =</span> C, </span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>           <span class="at">shift =</span> <span class="cf">function</span>(data, trt) data[[trt]] <span class="sc">+</span> <span class="fl">0.5</span>, </span>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a>           <span class="at">folds =</span> <span class="dv">2</span>, <span class="at">.SL_folds =</span> <span class="dv">2</span>)</span>
+<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a>fit_noshift <span class="ot">&lt;-</span> </span>
+<span id="cb13-11"><a href="#cb13-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">lmtp_sdr</span>(sim_cens, A, <span class="st">&quot;Y&quot;</span>, <span class="at">time_vary =</span> L, <span class="at">cens =</span> C,</span>
+<span id="cb13-12"><a href="#cb13-12" aria-hidden="true" tabindex="-1"></a>           <span class="at">shift =</span> <span class="cn">NULL</span>, <span class="at">folds =</span> <span class="dv">2</span>, <span class="at">.SL_folds =</span> <span class="dv">2</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">lmtp_contrast</span>(fit_shift, <span class="at">ref =</span> fit_noshift, <span class="at">type =</span> <span class="st">&quot;additive&quot;</span>)</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; LMTP Contrast: additive</span></span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Null hypothesis: theta == 0</span></span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   </span></span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   theta shift   ref std.error conf.low conf.high p.value</span></span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1   0.1 0.897 0.797   0.00588   0.0887     0.112  &lt;0.001</span></span></code></pre></div>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">lmtp_contrast</span>(fit_shift, <span class="at">ref =</span> fit_noshift, <span class="at">type =</span> <span class="st">&quot;rr&quot;</span>)</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; LMTP Contrast: relative risk</span></span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Null hypothesis: theta == 1</span></span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   </span></span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   theta shift   ref std.error conf.low conf.high p.value</span></span>
+<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1  1.13 0.897 0.797    0.0079     1.11      1.14  &lt;0.001</span></span></code></pre></div>
 </div>
 <div id="extra-features" class="section level3">
 <h3>Extra features</h3>
 <div id="tidy-results" class="section level5">
 <h5>Tidy results</h5>
 <p><strong>lmtp</strong> provides a <code>tidy()</code> method as described in <strong>broom</strong> <span class="citation">(Robinson and Hayes 2020)</span>:</p>
-<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1"></a><span class="kw">tidy</span>(fit_shift)</span>
-<span id="cb16-2"><a href="#cb16-2"></a><span class="co">#&gt; # A tibble: 1 x 5</span></span>
-<span id="cb16-3"><a href="#cb16-3"></a><span class="co">#&gt;   estimator estimate std.error conf.low conf.high</span></span>
-<span id="cb16-4"><a href="#cb16-4"></a><span class="co">#&gt;   &lt;chr&gt;        &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt;</span></span>
-<span id="cb16-5"><a href="#cb16-5"></a><span class="co">#&gt; 1 SDR          0.899   0.00985    0.880     0.918</span></span></code></pre></div>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tidy</span>(fit_shift)</span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # A tibble: 1 × 5</span></span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   estimator estimate std.error conf.low conf.high</span></span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   &lt;chr&gt;        &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt;</span></span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1 SDR          0.897   0.00999    0.878     0.917</span></span></code></pre></div>
 </div>
 <div id="parallel-processing" class="section level5">
 <h5>Parallel processing</h5>
@@ -651,78 +485,78 @@ r_t(a_t, h_t) = \frac{p^\lambda(a_t, h_t \mid \Lambda =    1)}{p^\lambda(a_t, 
 </div>
 <div id="references" class="section level2 unnumbered">
 <h2 class="unnumbered">References</h2>
-<div id="refs" class="references hanging-indent">
-<div id="ref-bang2005doubly">
-<p>Bang, Heejung, and James M Robins. 2005. “Doubly Robust Estimation in Missing Data and Causal Inference Models.” <em>Biometrics</em> 61 (4): 962–73.</p>
+<div id="refs" class="references csl-bib-body hanging-indent">
+<div id="ref-bang2005doubly" class="csl-entry">
+Bang, Heejung, and James M Robins. 2005. <span>“Doubly Robust Estimation in Missing Data and Causal Inference Models.”</span> <em>Biometrics</em> 61 (4): 962–73.
 </div>
-<div id="ref-future">
-<p>Bengtsson, Henrik. 2020a. <em>Future: Unified Parallel and Distributed Processing in R for Everyone</em>. <a href="https://CRAN.R-project.org/package=future">https://CRAN.R-project.org/package=future</a>.</p>
+<div id="ref-future" class="csl-entry">
+Bengtsson, Henrik. 2020a. <em><span class="nocase">future</span>: Unified Parallel and Distributed Processing in <span>R</span> for Everyone</em>. <a href="https://CRAN.R-project.org/package=future">https://CRAN.R-project.org/package=future</a>.
 </div>
-<div id="ref-progressr">
-<p>———. 2020b. <em>Progressr: A Inclusive, Unifying Api for Progress Updates</em>. <a href="https://CRAN.R-project.org/package=progressr">https://CRAN.R-project.org/package=progressr</a>.</p>
+<div id="ref-progressr" class="csl-entry">
+———. 2020b. <em><span class="nocase">progressr</span>: A Inclusive, Unifying API for Progress Updates</em>. <a href="https://CRAN.R-project.org/package=progressr">https://CRAN.R-project.org/package=progressr</a>.
 </div>
-<div id="ref-buckleyLinearRegressionCensored1979">
-<p>Buckley, Jonathan, and Ian James. 1979. “Linear Regression with Censored Data.” <em>Biometrika</em> 66 (3): 429–36. <a href="https://doi.org/10.2307/2335161">https://doi.org/10.2307/2335161</a>.</p>
+<div id="ref-buckleyLinearRegressionCensored1979" class="csl-entry">
+Buckley, Jonathan, and Ian James. 1979. <span>“Linear <span>Regression</span> with <span>Censored</span> <span>Data</span>.”</span> <em>Biometrika</em> 66 (3): 429–36. <a href="https://doi.org/10.2307/2335161">https://doi.org/10.2307/2335161</a>.
 </div>
-<div id="ref-munozPopulationInterventionCausal2012">
-<p>Díaz, Iván, and Mark van der Laan. 2012. “Population Intervention Causal Effects Based on Stochastic Interventions.” <em>Biometrics</em> 68 (2): 541–49. <a href="https://doi.org/10.1111/j.1541-0420.2011.01685.x">https://doi.org/10.1111/j.1541-0420.2011.01685.x</a>.</p>
+<div id="ref-munozPopulationInterventionCausal2012" class="csl-entry">
+Díaz, Iván, and Mark van der Laan. 2012. <span>“Population Intervention Causal Effects Based on Stochastic Interventions.”</span> <em>Biometrics</em> 68 (2): 541–49. <a href="https://doi.org/10.1111/j.1541-0420.2011.01685.x">https://doi.org/10.1111/j.1541-0420.2011.01685.x</a>.
 </div>
-<div id="ref-diazNonparametricCausalEffects2020a">
-<p>Díaz, Iván, Nicholas Williams, Katherine L. Hoffman, and Edward J. Schenck. 2020. “Non-Parametric Causal Effects Based on Longitudinal Modified Treatment Policies.” <em>arXiv:2006.01366</em>, June. <a href="https://arxiv.org/abs/2006.01366">https://arxiv.org/abs/2006.01366</a>.</p>
+<div id="ref-diazNonparametricCausalEffects2020a" class="csl-entry">
+Díaz, Iván, Nicholas Williams, Katherine L. Hoffman, and Edward J. Schenck. 2020. <span>“Non-Parametric Causal Effects Based on Longitudinal Modified Treatment Policies.”</span> <em>arXiv:2006.01366</em>, June. <a href="https://arxiv.org/abs/2006.01366">https://arxiv.org/abs/2006.01366</a>.
 </div>
-<div id="ref-fanCensoredRegressionLocal1994">
-<p>Fan, Jianqing, and Irene Gijbels. 1994. “Censored Regression: Local Linear Approximations and Their Applications.” <em>Journal of the American Statistical Association</em> 89 (426): 560–70. <a href="https://doi.org/10.2307/2290859">https://doi.org/10.2307/2290859</a>.</p>
+<div id="ref-fanCensoredRegressionLocal1994" class="csl-entry">
+Fan, Jianqing, and Irene Gijbels. 1994. <span>“Censored <span>Regression</span>: <span>Local</span> <span>Linear</span> <span>Approximations</span> and <span>Their</span> <span>Applications</span>.”</span> <em>Journal of the American Statistical Association</em> 89 (426): 560–70. <a href="https://doi.org/10.2307/2290859">https://doi.org/10.2307/2290859</a>.
 </div>
-<div id="ref-haneuseEstimationEffectInterventions2013">
-<p>Haneuse, S., and A. Rotnitzky. 2013. “Estimation of the Effect of Interventions That Modify the Received Treatment.” <em>Statistics in Medicine</em> 32 (30): 5260–77. <a href="https://doi.org/10.1002/sim.5907">https://doi.org/10.1002/sim.5907</a>.</p>
+<div id="ref-haneuseEstimationEffectInterventions2013" class="csl-entry">
+Haneuse, S., and A. Rotnitzky. 2013. <span>“Estimation of the Effect of Interventions That Modify the Received Treatment.”</span> <em>Statistics in Medicine</em> 32 (30): 5260–77. <a href="https://doi.org/10.1002/sim.5907">https://doi.org/10.1002/sim.5907</a>.
 </div>
-<div id="ref-kennedyNonparametricMethodsDoubly2017">
-<p>Kennedy, Edward H., Zongming Ma, Matthew D. McHugh, and Dylan S. Small. 2017. “Nonparametric Methods for Doubly Robust Estimation of Continuous Treatment Effects.” <em>Journal of the Royal Statistical Society. Series B, Statistical Methodology</em> 79 (4): 1229–45. <a href="https://doi.org/10.1111/rssb.12212">https://doi.org/10.1111/rssb.12212</a>.</p>
+<div id="ref-kennedyNonparametricMethodsDoubly2017" class="csl-entry">
+Kennedy, Edward H., Zongming Ma, Matthew D. McHugh, and Dylan S. Small. 2017. <span>“Nonparametric Methods for Doubly Robust Estimation of Continuous Treatment Effects.”</span> <em>Journal of the Royal Statistical Society. Series B, Statistical Methodology</em> 79 (4): 1229–45. <a href="https://doi.org/10.1111/rssb.12212">https://doi.org/10.1111/rssb.12212</a>.
 </div>
-<div id="ref-laanTargetedLearningCausal2011a">
-<p>Laan, Mark J. van der, and Sherri Rose. 2011. <em>Targeted Learning: Causal Inference for Observational and Experimental Data</em>. Springer Series in Statistics. New York: Springer-Verlag. <a href="https://doi.org/10.1007/978-1-4419-9782-1">https://doi.org/10.1007/978-1-4419-9782-1</a>.</p>
+<div id="ref-van2011targeted" class="csl-entry">
+Laan, Mark J van der, and Susan Gruber. 2011. <span>“Targeted Minimum Loss Based Estimation of an Intervention Specific Mean Outcome.”</span>
 </div>
-<div id="ref-laanTargetedMaximumLikelihood2006">
-<p>Laan, Mark J. van der, and Daniel Rubin. 2006. “Targeted Maximum Likelihood Learning.” <em>The International Journal of Biostatistics</em> 2 (1). <a href="https://doi.org/10.2202/1557-4679.1043">https://doi.org/10.2202/1557-4679.1043</a>.</p>
+<div id="ref-laanSuperLearner2007" class="csl-entry">
+Laan, Mark J. van der, Eric C. Polley, and Alan E. Hubbard. 2007. <span>“Super <span>Learner</span>.”</span> <em>Statistical Applications in Genetics and Molecular Biology</em> 6 (1). <a href="https://doi.org/10.2202/1544-6115.1309">https://doi.org/10.2202/1544-6115.1309</a>.
 </div>
-<div id="ref-vanderlaanUnifiedCrossValidationMethodology2003">
-<p>Laan, Mark van der, and Sandrine Dudoit. 2003. “Unified Cross-Validation Methodology for Selection Among Estimators and a General Cross-Validated Adaptive Epsilon-Net Estimator: Finite Sample Oracle Inequalities and Examples.” <em>U.C. Berkeley Division of Biostatistics Working Paper Series</em>, November. <a href="https://biostats.bepress.com/ucbbiostat/paper130/">https://biostats.bepress.com/ucbbiostat/paper130/</a>.</p>
+<div id="ref-laanTargetedLearningCausal2011a" class="csl-entry">
+Laan, Mark J. van der, and Sherri Rose. 2011. <em>Targeted <span>Learning</span>: <span>Causal</span> <span>Inference</span> for <span>Observational</span> and <span>Experimental</span> <span>Data</span></em>. Springer <span>Series</span> in <span>Statistics</span>. New York: Springer-Verlag. <a href="https://doi.org/10.1007/978-1-4419-9782-1">https://doi.org/10.1007/978-1-4419-9782-1</a>.
 </div>
-<div id="ref-van2011targeted">
-<p>Laan, Mark J van der, and Susan Gruber. 2011. “Targeted Minimum Loss Based Estimation of an Intervention Specific Mean Outcome.”</p>
+<div id="ref-laanTargetedMaximumLikelihood2006" class="csl-entry">
+Laan, Mark J. van der, and Daniel Rubin. 2006. <span>“Targeted <span>Maximum</span> <span>Likelihood</span> <span>Learning</span>.”</span> <em>The International Journal of Biostatistics</em> 2 (1). <a href="https://doi.org/10.2202/1557-4679.1043">https://doi.org/10.2202/1557-4679.1043</a>.
 </div>
-<div id="ref-laanSuperLearner2007">
-<p>Laan, Mark J. van der, Eric C. Polley, and Alan E. Hubbard. 2007. “Super Learner.” <em>Statistical Applications in Genetics and Molecular Biology</em> 6 (1). <a href="https://doi.org/10.2202/1544-6115.1309">https://doi.org/10.2202/1544-6115.1309</a>.</p>
+<div id="ref-vanderlaanUnifiedCrossValidationMethodology2003" class="csl-entry">
+Laan, Mark van der, and Sandrine Dudoit. 2003. <span>“Unified <span>Cross</span>-<span>Validation</span> <span>Methodology</span> <span>For</span> <span>Selection</span> <span>Among</span> <span>Estimators</span> and a <span>General</span> <span>Cross</span>-<span>Validated</span> <span>Adaptive</span> <span>Epsilon</span>-<span>Net</span> <span>Estimator</span>: <span>Finite</span> <span>Sample</span> <span>Oracle</span> <span>Inequalities</span> and <span>Examples</span>.”</span> <em>U.C. Berkeley Division of Biostatistics Working Paper Series</em>, November. <a href="https://biostats.bepress.com/ucbbiostat/paper130/">https://biostats.bepress.com/ucbbiostat/paper130/</a>.
 </div>
-<div id="ref-luedtke2017sequential">
-<p>Luedtke, Alexander R, Oleg Sofrygin, Mark J van der Laan, and Marco Carone. 2017. “Sequential Double Robustness in Right-Censored Longitudinal Models.” <em>arXiv Preprint arXiv:1705.02459</em>.</p>
+<div id="ref-luedtke2017sequential" class="csl-entry">
+Luedtke, Alexander R, Oleg Sofrygin, Mark J van der Laan, and Marco Carone. 2017. <span>“Sequential Double Robustness in Right-Censored Longitudinal Models.”</span> <em>arXiv Preprint arXiv:1705.02459</em>.
 </div>
-<div id="ref-mendes2018metabolic">
-<p>Mendes, Márcio de Almeida, Inácio da Silva, Virgilio Ramires, Felipe Reichert, Rafaela Martins, Rodrigo Ferreira, and Elaine Tomasi. 2018. “Metabolic Equivalent of Task (Mets) Thresholds as an Indicator of Physical Activity Intensity.” <em>PloS One</em> 13 (7): e0200701.</p>
+<div id="ref-mendes2018metabolic" class="csl-entry">
+Mendes, Márcio de Almeida, Inácio da Silva, Virgilio Ramires, Felipe Reichert, Rafaela Martins, Rodrigo Ferreira, and Elaine Tomasi. 2018. <span>“Metabolic Equivalent of Task (METs) Thresholds as an Indicator of Physical Activity Intensity.”</span> <em>PloS One</em> 13 (7): e0200701.
 </div>
-<div id="ref-petersen2014delayed">
-<p>Petersen, Maya L, Linh Tran, Elvin H Geng, Steven J Reynolds, Andrew Kambugu, Robin Wood, David R Bangsberg, Constantin T Yiannoutsos, Steven G Deeks, and Jeffrey N Martin. 2014. “Delayed Switch of Antiretroviral Therapy After Virologic Failure Associated with Elevated Mortality Among Hiv-Infected Adults in Africa.” <em>AIDS (London, England)</em> 28 (14): 2097.</p>
+<div id="ref-petersen2014delayed" class="csl-entry">
+Petersen, Maya L, Linh Tran, Elvin H Geng, Steven J Reynolds, Andrew Kambugu, Robin Wood, David R Bangsberg, Constantin T Yiannoutsos, Steven G Deeks, and Jeffrey N Martin. 2014. <span>“Delayed Switch of Antiretroviral Therapy After Virologic Failure Associated with Elevated Mortality Among HIV-Infected Adults in Africa.”</span> <em>AIDS (London, England)</em> 28 (14): 2097.
 </div>
-<div id="ref-SuperLearner">
-<p>Polley, Eric, Erin LeDell, Chris Kennedy, and Mark van der Laan. 2019. <em>SuperLearner: Super Learner Prediction</em>. <a href="https://CRAN.R-project.org/package=SuperLearner">https://CRAN.R-project.org/package=SuperLearner</a>.</p>
+<div id="ref-SuperLearner" class="csl-entry">
+Polley, Eric, Erin LeDell, Chris Kennedy, and Mark van der Laan. 2019. <em>SuperLearner: Super Learner Prediction</em>. <a href="https://CRAN.R-project.org/package=SuperLearner">https://CRAN.R-project.org/package=SuperLearner</a>.
 </div>
-<div id="ref-broom">
-<p>Robinson, David, and Alex Hayes. 2020. <em>Broom: Convert Statistical Analysis Objects into Tidy Tibbles</em>. <a href="https://CRAN.R-project.org/package=broom">https://CRAN.R-project.org/package=broom</a>.</p>
+<div id="ref-broom" class="csl-entry">
+Robinson, David, and Alex Hayes. 2020. <em><span class="nocase">broom</span>: Convert Statistical Analysis Objects into Tidy Tibbles</em>. <a href="https://CRAN.R-project.org/package=broom">https://CRAN.R-project.org/package=broom</a>.
 </div>
-<div id="ref-rotnitzkyDoublyRobustEstimation2006">
-<p>Rotnitzky, Andrea, David Faraggi, and Enrique Schisterman. 2006. “Doubly Robust Estimation of the Area Under the Receiver-Operating Characteristic Curve in the Presence of Verification Bias.” <em>Journal of the American Statistical Association</em> 101 (475): 1276–88. <a href="https://doi.org/10.1198/016214505000001339">https://doi.org/10.1198/016214505000001339</a>.</p>
+<div id="ref-rotnitzkyDoublyRobustEstimation2006" class="csl-entry">
+Rotnitzky, Andrea, David Faraggi, and Enrique Schisterman. 2006. <span>“Doubly <span>Robust</span> <span>Estimation</span> of the <span>Area</span> <span>Under</span> the <span>Receiver</span>-<span>Operating</span> <span>Characteristic</span> <span>Curve</span> in the <span>Presence</span> of <span>Verification</span> <span>Bias</span>.”</span> <em>Journal of the American Statistical Association</em> 101 (475): 1276–88. <a href="https://doi.org/10.1198/016214505000001339">https://doi.org/10.1198/016214505000001339</a>.
 </div>
-<div id="ref-rotnitzky2017multiply">
-<p>Rotnitzky, Andrea, James Robins, and Lucia Babino. 2017. “On the Multiply Robust Estimation of the Mean of the G-Functional.” <em>arXiv Preprint arXiv:1705.08582</em>.</p>
+<div id="ref-rotnitzky2017multiply" class="csl-entry">
+Rotnitzky, Andrea, James Robins, and Lucia Babino. 2017. <span>“On the Multiply Robust Estimation of the Mean of the g-Functional.”</span> <em>arXiv Preprint arXiv:1705.08582</em>.
 </div>
-<div id="ref-rubinDoublyRobustCensoring2006">
-<p>Rubin, Daniel, and Mark van der Laan. 2006. “Doubly Robust Censoring Unbiased Transformations.” <em>U.C. Berkeley Division of Biostatistics Working Paper Series</em>, June. <a href="https://biostats.bepress.com/ucbbiostat/paper208/">https://biostats.bepress.com/ucbbiostat/paper208/</a>.</p>
+<div id="ref-rubinDoublyRobustCensoring2006" class="csl-entry">
+Rubin, Daniel, and Mark van der Laan. 2006. <span>“Doubly <span>Robust</span> <span>Censoring</span> <span>Unbiased</span> <span>Transformations</span>.”</span> <em>U.C. Berkeley Division of Biostatistics Working Paper Series</em>, June. <a href="https://biostats.bepress.com/ucbbiostat/paper208/">https://biostats.bepress.com/ucbbiostat/paper208/</a>.
 </div>
-<div id="ref-vanderLaanRose11">
-<p>van der Laan, Mark J, and Sherri Rose. 2011. <em>Targeted Learning: Causal Inference for Observational and Experimental Data</em>. New York: Springer.</p>
+<div id="ref-vanderLaanRose11" class="csl-entry">
+van der Laan, Mark J, and Sherri Rose. 2011. <em>Targeted Learning: Causal Inference for Observational and Experimental Data</em>. New York: Springer.
 </div>
-<div id="ref-vanderLaanRose18">
-<p>———. 2018. <em>Targeted Learning in Data Science: Causal Inference for Complex Longitudinal Studies</em>. New York: Springer.</p>
+<div id="ref-vanderLaanRose18" class="csl-entry">
+———. 2018. <em>Targeted Learning in Data Science: Causal Inference for Complex Longitudinal Studies</em>. New York: Springer.
 </div>
 </div>
 </div>

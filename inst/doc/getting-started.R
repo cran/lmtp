@@ -17,14 +17,14 @@ time_vary <- list(c("L_11", "L_12"),
 create_node_list(trt = trt, baseline = baseline, time_vary = time_vary, tau = 2)
 
 ## -----------------------------------------------------------------------------
-shift <- function(data, trt) {
+mtp <- function(data, trt) {
   (data[[trt]] - 1) * (data[[trt]] - 1 >= 1) + data[[trt]] * (data[[trt]] - 1 < 1)
 }
 
 ## -----------------------------------------------------------------------------
 A <- c("A_1", "A_2", "A_3", "A_4")
 L <- list(c("L_1"), c("L_2"), c("L_3"), c("L_4"))
-lmtp_sdr(sim_t4, A, "Y", time_vary = L, k = 0, shift = shift, folds = 5)
+lmtp_sdr(sim_t4, A, "Y", time_vary = L, k = 0, shift = mtp, folds = 5)
 
 ## ----warning = FALSE----------------------------------------------------------
 if (require("twang", quietly = TRUE, attach.required = FALSE)) {
@@ -40,22 +40,23 @@ if (require("twang", quietly = TRUE, attach.required = FALSE)) {
 ## ----warning = FALSE----------------------------------------------------------
 A <- c("A_1", "A_2", "A_3", "A_4")
 L <- list(c("L_1"), c("L_2"), c("L_3"), c("L_4"))
-shift <- function(data, trt) {
-  (data[[trt]] - 1) * (data[[trt]] - 1 >= 1) + data[[trt]] * (data[[trt]] - 1 < 1)
-}
 
 # creating a dynamic mtp that applies the shift function 
 # but also depends on history and the current time
 dynamic_mtp <- function(data, trt) {
-  if (trt == "A_1") {
-    # if its the first time point, follow the same mtp as before
-    shift(data, trt)
-  } else {
-    # otherwise check if the time varying covariate equals 1
-    ifelse(data[[sub("A", "L", trt)]] == 1, 
-           shift(data, trt), # if yes continue with the policy
-           data[[trt]])      # otherwise do nothing
+  mtp <- function(data, trt) {
+    (data[[trt]] - 1) * (data[[trt]] - 1 >= 1) + data[[trt]] * (data[[trt]] - 1 < 1)
   }
+  
+  # if its the first time point, follow the same mtp as before
+  if (trt == "A_1") return(mtp(data, trt))
+  
+  # otherwise check if the time varying covariate equals 1
+  ifelse(
+    data[[sub("A", "L", trt)]] == 1, 
+    mtp(data, trt), # if yes continue with the policy
+    data[[trt]]     # otherwise do nothing
+  )      
 }
 
 lmtp_tmle(sim_t4, A, "Y", time_vary = L, k = 0, 

@@ -1,12 +1,12 @@
 Package: lmtp
 Title: Non-Parametric Causal Effects of Feasible Interventions Based on
         Modified Treatment Policies
-Version: 0.9.0
+Version: 0.9.1
 Authors@R: 
     c(person(given = "Nicholas",
              family = "Williams",
              role = c("aut", "cre", "cph"),
-             email = "niw4001@med.cornell.edu", 
+             email = "ntwilliams.personal@gmail.com", 
              comment = c(ORCID = "0000-0002-1378-4831")),
       person(given = "Iván", 
              family = "Díaz", 
@@ -26,13 +26,16 @@ LazyData: true
 RoxygenNote: 7.1.1
 Imports: stats, nnls, cli, utils, R6, generics, origami, future (>=
         1.17.0), progressr, data.table, SuperLearner
-Suggests: testthat (>= 2.1.0), covr, rmarkdown, knitr, ranger, twang
+URL: https://github.com/nt-williams/lmtp
+BugReports: https://github.com/nt-williams/lmtp/issues
+Suggests: testthat (>= 2.1.0), covr, rmarkdown, knitr, ranger, twang,
+        markdown
 VignetteBuilder: knitr
 NeedsCompilation: no
-Packaged: 2021-02-21 17:45:15 UTC; Nick
+Packaged: 2021-08-16 19:27:29 UTC; nickwilliams
 Author: Nicholas Williams [aut, cre, cph]
     (<https://orcid.org/0000-0002-1378-4831>),
   Iván Díaz [aut, cph] (<https://orcid.org/0000-0001-9056-2047>)
-Maintainer: Nicholas Williams <niw4001@med.cornell.edu>
+Maintainer: Nicholas Williams <ntwilliams.personal@gmail.com>
 Repository: CRAN
-Date/Publication: 2021-02-22 15:50:02 UTC
+Date/Publication: 2021-08-18 09:10:02 UTC
