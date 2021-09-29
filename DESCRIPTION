@@ -1,7 +1,7 @@
 Package: lmtp
 Title: Non-Parametric Causal Effects of Feasible Interventions Based on
         Modified Treatment Policies
-Version: 0.9.1
+Version: 1.0.0
 Authors@R: 
     c(person(given = "Nicholas",
              family = "Williams",
@@ -14,7 +14,7 @@ Authors@R:
              role = c("aut", "cph"),
              comment = c(ORCID = "0000-0001-9056-2047")))
 Description: Non-parametric estimators for casual effects based on longitudinal modified treatment 
-  policies as described in Diaz, Williams, and Hoffman (<arXiv:2006.01366>), traditional point treatment, 
+  policies as described in Diaz, Williams, Hoffman, and Schenck <doi:10.1080/01621459.2021.1955691>, traditional point treatment, 
   and traditional longitudinal effects. Continuous, binary, and categorical treatments are allowed as well are 
   censored outcomes. The treatment mechanism is estimated via a density ratio classification procedure 
   irrespective of treatment variable type. For both continuous and binary outcomes, additive treatment effects 
@@ -32,10 +32,10 @@ Suggests: testthat (>= 2.1.0), covr, rmarkdown, knitr, ranger, twang,
         markdown
 VignetteBuilder: knitr
 NeedsCompilation: no
-Packaged: 2021-08-16 19:27:29 UTC; nickwilliams
+Packaged: 2021-09-28 17:16:01 UTC; nickwilliams
 Author: Nicholas Williams [aut, cre, cph]
     (<https://orcid.org/0000-0002-1378-4831>),
   Iván Díaz [aut, cph] (<https://orcid.org/0000-0001-9056-2047>)
 Maintainer: Nicholas Williams <ntwilliams.personal@gmail.com>
 Repository: CRAN
-Date/Publication: 2021-08-18 09:10:02 UTC
+Date/Publication: 2021-09-29 07:10:07 UTC

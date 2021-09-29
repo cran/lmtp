@@ -24,7 +24,9 @@ mtp <- function(data, trt) {
 ## -----------------------------------------------------------------------------
 A <- c("A_1", "A_2", "A_3", "A_4")
 L <- list(c("L_1"), c("L_2"), c("L_3"), c("L_4"))
-lmtp_sdr(sim_t4, A, "Y", time_vary = L, k = 0, shift = mtp, folds = 5)
+lmtp_sdr(sim_t4, A, "Y", time_vary = L, k = 0, 
+         shift = mtp, folds = 3, 
+         intervention_type = "mtp")
 
 ## ----warning = FALSE----------------------------------------------------------
 if (require("twang", quietly = TRUE, attach.required = FALSE)) {
@@ -41,7 +43,7 @@ if (require("twang", quietly = TRUE, attach.required = FALSE)) {
 A <- c("A_1", "A_2", "A_3", "A_4")
 L <- list(c("L_1"), c("L_2"), c("L_3"), c("L_4"))
 
-# creating a dynamic mtp that applies the shift function 
+# creating a mtp that applies the shift function 
 # but also depends on history and the current time
 dynamic_mtp <- function(data, trt) {
   mtp <- function(data, trt) {
@@ -60,7 +62,8 @@ dynamic_mtp <- function(data, trt) {
 }
 
 lmtp_tmle(sim_t4, A, "Y", time_vary = L, k = 0, 
-          shift = dynamic_mtp, folds = 2, .SL_folds = 2)
+          shift = dynamic_mtp, intervention_type = "mtp", 
+          folds = 2, .SL_folds = 2)
 
 ## ----warning = FALSE----------------------------------------------------------
 if (require("ranger", quietly = TRUE, attach.required = FALSE) && 
@@ -77,15 +80,6 @@ if (require("ranger", quietly = TRUE, attach.required = FALSE) &&
 
 ## -----------------------------------------------------------------------------
 head(sim_cens[sim_cens$C1 == 0, ])
-
-## -----------------------------------------------------------------------------
-A <- c("A1", "A2")
-L <- list(c("L1"), c("L2"))
-C <- c("C1", "C2")
-
-lmtp_tmle(sim_cens, A, "Y", time_vary = L, cens = C,
-          shift = function(data, trt) data[[trt]] + 0.5, 
-          folds = 2, .SL_folds = 2)
 
 ## -----------------------------------------------------------------------------
 A <- c("A1", "A2")
@@ -115,25 +109,20 @@ lmtp_sdr(sim_timevary_surv, A, Y, W, L, C, outcome_type = "survival",
          shift = static_binary_on, folds = 2, .SL_folds = 2)
 
 ## -----------------------------------------------------------------------------
-A <- c("A1", "A2")
-L <- list(c("L1"), c("L2"))
-C <- c("C1", "C2")
-
-fit_shift <- 
-  lmtp_sdr(sim_cens, A, "Y", time_vary = L, cens = C, 
-           shift = function(data, trt) data[[trt]] + 0.5, 
-           folds = 2, .SL_folds = 2)
-
-fit_noshift <- 
-  lmtp_sdr(sim_cens, A, "Y", time_vary = L, cens = C,
-           shift = NULL, folds = 2, .SL_folds = 2)
-
-## -----------------------------------------------------------------------------
-lmtp_contrast(fit_shift, ref = fit_noshift, type = "additive")
-
-## -----------------------------------------------------------------------------
-lmtp_contrast(fit_shift, ref = fit_noshift, type = "rr")
-
-## -----------------------------------------------------------------------------
-tidy(fit_shift)
+if (require("twang", quietly = TRUE, attach.required = FALSE)) {
+  data("iptwExWide", package = "twang")
+  A <- paste0("tx", 1:3)
+  W <- c("gender", "age")
+  L <- list(c("use0"), c("use1"), c("use2"))
+  
+  on <- lmtp_tmle(iptwExWide, A, "outcome", W, L, 
+                  shift = static_binary_on, outcome_type = "continuous",
+                  folds = 2, .SL_folds = 2)
+  
+  off <- lmtp_tmle(iptwExWide, A, "outcome", W, L, 
+                  shift = static_binary_off, outcome_type = "continuous",
+                  folds = 2, .SL_folds = 2)
+  
+  lmtp_contrast(on, ref = off, type = "additive")
+}
 
