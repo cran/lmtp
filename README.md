@@ -9,13 +9,12 @@
 status](https://www.r-pkg.org/badges/version/lmtp)](https://CRAN.R-project.org/package=lmtp)
 ![](http://cranlogs.r-pkg.org/badges/grand-total/lmtp) [![R build
 status](https://github.com/nt-williams/lmtp/workflows/R-CMD-check/badge.svg)](https://github.com/nt-williams/lmtp/actions)
-[![codecov](https://codecov.io/gh/nt-williams/lmtp/branch/master/graph/badge.svg)](https://codecov.io/gh/nt-williams/lmtp)
+[![codecov](https://codecov.io/gh/nt-williams/lmtp/branch/master/graph/badge.svg)](https://app.codecov.io/gh/nt-williams/lmtp)
 [![License: GPL
 v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
 [![Project Status: Active – The project has reached a stable, usable
 state and is being actively
 developed.](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)
-[![DOI](https://zenodo.org/badge/251356023.svg)](https://zenodo.org/badge/latestdoi/251356023)
 <!-- badges: end -->
 
 > Non-parametric Causal Effects of Feasible Interventions Based on
@@ -35,12 +34,14 @@ treatment weighting estimator are provided for the sake of being
 thorough but their use is recommended against in favor of the TML and
 SDR estimators). Both binary and continuous outcomes (both with
 censoring) are allowed. **lmtp** is built atop the
-[`SuperLearner`](https://cran.r-project.org/package=SuperLearner)
-package to utilize ensemble machine learning for estimation. The
-treatment mechanism is estimated via a density ratio classification
-procedure irrespective of treatment variable type providing decreased
-computation time when treatment is continuous. Dynamic treatment regimes
-are also supported.
+[`sl3`](https://github.com/tlverse/sl3) package to utilize ensemble
+machine learning for estimation. The treatment mechanism is estimated
+via a density ratio classification procedure irrespective of treatment
+variable type providing decreased computation time when treatment is
+continuous. Dynamic treatment regimes are also supported.
+
+A list of papers using **lmtp** is
+[here](https://gist.github.com/nt-williams/15068f5849a67ff4d2cb7f2dcf97b3de).
 
 For an in-depth look at the package’s functionality, please consult the
 accompanying vignette.
@@ -65,11 +66,18 @@ The **sl3** compatible version can be installed from GitHub with:
 devtools::install_github("nt-williams/lmtp@sl3")
 ```
 
-The **sl3** development compatible version can be installed from GitHub
-with:
+A version allowing for different covariates sets for the treatment and
+outcome regressions:
 
 ``` r
-devtools::install_github("nt-williams/lmtp@sl3-devel")
+devtools::install_github("nt-williams/lmtp@2covarSets")
+```
+
+A version allowing for different covariates sets for the treatment and
+outcome regressions and that uses **sl3**:
+
+``` r
+devtools::install_github("nt-williams/lmtp@2covarSets-sl3")
 ```
 
 ## What even is a modified treatment policy?
@@ -82,7 +90,7 @@ non-zero probability of experiencing a treatment value. **When working
 with continuous or multivalued treatments, violations of the positivity
 assumption are likely to occur. MTPs offer a solution to this problem.**
 
-## Can lmtp estimation other effects?
+## Can lmtp estimate other effects?
 
 Yes! **lmtp** can estimate the effects of deterministic, static
 treatment effects (such as the ATE) and deterministic, dynamic treatment
@@ -115,7 +123,6 @@ regimes for binary, continuous, and survival outcomes.
 
 ``` r
 library(lmtp)
-#> Major changes in lmtp 0.9.0. Consult NEWS.md for more information.
 
 # the data: 4 treatment nodes with time varying covariates and a binary outcome
 head(sim_t4)

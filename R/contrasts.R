@@ -20,13 +20,22 @@
 lmtp_contrast <- function(..., ref, type = c("additive", "rr", "or")) {
   fits <- list(...)
 
-  check_lmtp_type(fits, ref)
-  check_outcome_type(fits, ref, match.arg(type))
+  assertLmtpList(fits)
+  assertDr(fits)
+  assertRefClass(ref)
+  assertContrastType(match.arg(type), fits, .var.name = "type")
 
-  switch(check_ref_type(ref, match.arg(type)),
+  if (is.numeric(ref)) {
+    type <- "additive"
+    message("Non-estimated reference value, defaulting type = 'additive'")
+  } else {
+    type <- match.arg(type)
+  }
+
+  switch(type,
          "additive" = contrast_additive(fits = fits, ref = ref),
-         "rr"       = contrast_rr(fits = fits, ref = ref),
-         "or"       = contrast_or(fits = fits, ref = ref))
+         "rr" = contrast_rr(fits = fits, ref = ref),
+         "or" = contrast_or(fits = fits, ref = ref))
 }
 
 contrast_additive <- function(fits, ref) {
@@ -55,7 +64,9 @@ contrast_additive_single <- function(fit, ref) {
     eif <- fit$eif
   }
 
-  std.error <- sd(eif) / sqrt(length(eif))
+  clusters <- split(eif, fit$id)
+  j <- length(clusters)
+  std.error <- sqrt(var(vapply(clusters, function(x) mean(x), 1)) / j)
   conf.low <- theta - qnorm(0.975) * std.error
   conf.high <- theta + qnorm(0.975) * std.error
   p.value <- pnorm(abs(theta) / std.error, lower.tail = FALSE) * 2
@@ -93,7 +104,9 @@ contrast_rr <- function(fits, ref) {
 contrast_rr_single <- function(fit, ref) {
   theta <- fit$theta / ref$theta
   log_eif <- (fit$eif / fit$theta) - (ref$eif / ref$theta)
-  std.error <- sd(log_eif) / sqrt(length(log_eif))
+  clusters <- split(log_eif, fit$id)
+  j <- length(clusters)
+  std.error <- sqrt(var(vapply(clusters, function(x) mean(x), 1)) / j)
   conf.low <- exp(log(theta) - qnorm(0.975) * std.error)
   conf.high <- exp(log(theta) + qnorm(0.975) * std.error)
   p.value <- pnorm(abs(log(theta)) / std.error, lower.tail = FALSE) * 2
@@ -130,7 +143,9 @@ contrast_or <- function(fits, ref) {
 contrast_or_single <- function(fit, ref) {
   theta <- (fit$theta / (1 - fit$theta)) / (ref$theta / (1 - ref$theta))
   log_eif <- (fit$eif / (fit$theta * (1 - fit$theta))) - (ref$eif / (ref$theta * (1 - ref$theta)))
-  std.error <- sd(log_eif) / sqrt(length(log_eif))
+  clusters <- split(log_eif, fit$id)
+  j <- length(clusters)
+  std.error <- sqrt(var(vapply(clusters, function(x) mean(x), 1)) / j)
   conf.low  <- exp(log(theta) - qnorm(0.975) * std.error)
   conf.high <- exp(log(theta) + qnorm(0.975) * std.error)
   p.value <- pnorm(abs(log(theta)) / std.error, lower.tail = FALSE) * 2
@@ -149,3 +164,7 @@ contrast_or_single <- function(fit, ref) {
   )
 }
 
+no_stderr_warning <- function(estimator) {
+  cat("\n")
+  cli::cli_alert_warning("Standard errors aren't provided for the {estimator} estimator.")
+}
