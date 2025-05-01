@@ -1,7 +1,7 @@
 Package: lmtp
 Title: Non-Parametric Causal Effects of Feasible Interventions Based on
         Modified Treatment Policies
-Version: 1.4.0
+Version: 1.5.0
 Authors@R: 
     c(person(given = "Nicholas",
              family = "Williams",
@@ -18,23 +18,24 @@ Description: Non-parametric estimators for casual effects based on longitudinal 
   and traditional longitudinal effects. Continuous, binary, categorical treatments, and multivariate treatments are allowed as well are 
   censored outcomes. The treatment mechanism is estimated via a density ratio classification procedure 
   irrespective of treatment variable type. For both continuous and binary outcomes, additive treatment effects 
-  can be calculated and relative risks and odds ratios may be calculated for binary outcomes.  
+  can be calculated and relative risks and odds ratios may be calculated for binary outcomes. 
+  Supports survival outcomes with competing risks (Diaz, Hoffman, and Hejazi; <doi:10.1007/s10985-023-09606-7>).
 Depends: R (>= 2.10)
 License: AGPL-3
 Encoding: UTF-8
 LazyData: true
-RoxygenNote: 7.3.1
+RoxygenNote: 7.3.2
 Imports: stats, nnls, cli, R6, generics, origami, future (>= 1.17.0),
         progressr, data.table (>= 1.13.0), checkmate (>= 2.1.0),
-        SuperLearner, schoolmath
+        SuperLearner, isotone, ife, lifecycle
 URL: https://beyondtheate.com/, https://github.com/nt-williams/lmtp
 BugReports: https://github.com/nt-williams/lmtp/issues
 Suggests: testthat (>= 2.1.0), covr, rmarkdown, knitr, ranger, twang
 NeedsCompilation: no
-Packaged: 2024-06-27 03:27:38 UTC; ntw2117
-Author: Nicholas Williams [aut, cre, cph]
-    (<https://orcid.org/0000-0002-1378-4831>),
-  Iván Díaz [aut, cph] (<https://orcid.org/0000-0001-9056-2047>)
+Packaged: 2025-05-01 17:34:35 UTC; nicholaswilliams
+Author: Nicholas Williams [aut, cre, cph] (ORCID:
+    <https://orcid.org/0000-0002-1378-4831>),
+  Iván Díaz [aut, cph] (ORCID: <https://orcid.org/0000-0001-9056-2047>)
 Maintainer: Nicholas Williams <ntwilliams.personal@gmail.com>
 Repository: CRAN
-Date/Publication: 2024-06-27 03:40:02 UTC
+Date/Publication: 2025-05-01 22:50:02 UTC
