@@ -1,6 +1,6 @@
-1aed0181701d2864476a9a5373dbd486 *DESCRIPTION
+45bf70fd4372403be6ee2c68f9e06f3c *DESCRIPTION
 705278807b908e7a303ec132ac363310 *NAMESPACE
-8c20304df07295816f23dcde78c4c01c *NEWS.md
+3d475ea620118994da6f3c52d0fc3efe *NEWS.md
 367e5679396f61e4bba3e9cf287df43b *R/Task.R
 ba133f86d8375aca450feb2a979476dd *R/Vars.R
 7b0ada340522df3cc15cb34e8a5cd938 *R/checks.R
@@ -12,14 +12,14 @@ e2d7b413d1bcfc5f5d7afb96dc36aa61 *R/density_ratios.R
 fe52f39c45c613a0422e850c38300496 *R/estimators.R
 e4dc146f30acb600e0b2c147efda563d *R/event_locf.R
 55fb5a03618deb74de1718cba360be94 *R/lmtp-package.R
-8dfacd7bf3bc8a0b328254f47fc0e583 *R/lmtp_control.R
+031363a4b172fbfd1aebc6dd4d1877e2 *R/lmtp_control.R
 d2b75e26f47c1d029ed321545e2cf00a *R/lmtp_survival.R
 e579db5ad4d8a7ba09611737b60a3fde *R/nodelist.R
 d8b056551441473036ebc2c7c1c13ee6 *R/print.R
 5fd867ef337a4409b6ebf1c02c932887 *R/recombine.R
 f6da7f6600a84fb10acda8c09d6e759f *R/sdr.R
 a2bb9c5ea545dc0b151b42ed3bf377f9 *R/shift.R
-6e86b991459d91b97b56976ff5cb75a3 *R/sl.R
+dd02fd49e50489ed6ab3168831d2a3b7 *R/sl.R
 2378d9889a2f1d5d0ce7b73342328ab3 *R/theta.R
 ea0ddab0f75b597dc99be8a68bde80c4 *R/tidy.R
 5b5848124f0e314baa6496285bb352b2 *R/tmle.R
@@ -44,7 +44,7 @@ a5440230ce5e086f9fd2fc1d00fefb1a *man/figures/survival.png
 70a8b2a399f13ce73fd3912ccb6e4002 *man/ipsi.Rd
 c2565d2a518c5b5b426b538d0dbe7220 *man/lmtp-package.Rd
 30a88f60beb9534f3d2eafa3dac2db9a *man/lmtp_contrast.Rd
-29025e410a7f6bd7deda5ad6619e0078 *man/lmtp_control.Rd
+ce3ad208b1062a60957b599538e4347a *man/lmtp_control.Rd
 b9e8ecf7c891a823f7cf131853e37aae *man/lmtp_sdr.Rd
 e01909f6fe77738eaf1c4bd18af5828f *man/lmtp_survival.Rd
 8290aaf0cd0dee4ccd16072d94f3164d *man/lmtp_tmle.Rd
