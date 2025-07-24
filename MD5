@@ -1,9 +1,9 @@
-7ad2a015741ea9e615938cf0c398c14f *DESCRIPTION
+b741753774429a0b190639baa6e8759f *DESCRIPTION
 037c46e1ce7e68ec906858394700aa50 *NAMESPACE
-5276827fbe179d594d7945f5a299faf6 *NEWS.md
+e3973c46e382357dd7e0aaf7d43d6b16 *NEWS.md
 369c7dacfab92aa6b5fec6d8628f8a11 *R/Task.R
 ba133f86d8375aca450feb2a979476dd *R/Vars.R
-e1660bec97725ab738f172cc0c78b56b *R/checks.R
+f6f9085f504eb28cfa495284cfab4e38 *R/checks.R
 d7cdf9e2f4f7d3f3d325791bda7b81bb *R/contrasts.R
 8a669a62d9a84cfefefb44c6061d2ac2 *R/data.R
 2e83fb3422bf54b788cd0e293faede68 *R/defunct.R
@@ -13,7 +13,7 @@ e737d6b7a33d505fa1e586ea753cfec0 *R/estimators.R
 c23fb7e504064a7cb418dfea34b6a345 *R/event_locf.R
 55fb5a03618deb74de1718cba360be94 *R/lmtp-package.R
 031363a4b172fbfd1aebc6dd4d1877e2 *R/lmtp_control.R
-8aa54bc4ec1269600792c2664b529d43 *R/lmtp_survival.R
+889ac986fdf54d6671b059364bf970b3 *R/lmtp_survival.R
 4afe10858fc1c70a4f65a36a59f2ad8d *R/print.R
 5fd867ef337a4409b6ebf1c02c932887 *R/recombine.R
 4bafe81fd095459427cd7c5c54e2b719 *R/sdr.R
@@ -22,7 +22,7 @@ dd02fd49e50489ed6ab3168831d2a3b7 *R/sl.R
 8f8ee80aa03631e706cb52d897ef6123 *R/theta.R
 ea0ddab0f75b597dc99be8a68bde80c4 *R/tidy.R
 b8f647dd97acb6051ba052d66a5ca83c *R/tmle.R
-3f6c9085dad8a8ce310ab38974dec027 *R/utils.R
+59f7e9c90ee0a9413a5e4f643abef13c *R/utils.R
 64842a072c00b92f61bb4f4005243b11 *README.md
 76161b65639451c966be75488458b3c3 *build/partial.rdb
 cbdd0fc5d639058927b3e5168b44f13a *data/multivariate_data.rda
@@ -41,7 +41,7 @@ a5440230ce5e086f9fd2fc1d00fefb1a *man/figures/survival.png
 9320c570a16fd05cd52e7100236ff198 *man/figures/timevary.png
 873b03215cbc4eb40a58a03132aeae03 *man/figures/timevarysurvival.png
 70a8b2a399f13ce73fd3912ccb6e4002 *man/ipsi.Rd
-c2565d2a518c5b5b426b538d0dbe7220 *man/lmtp-package.Rd
+258c96b579830b356a4a637551550f4c *man/lmtp-package.Rd
 30a88f60beb9534f3d2eafa3dac2db9a *man/lmtp_contrast.Rd
 ce3ad208b1062a60957b599538e4347a *man/lmtp_control.Rd
 c2f47272e285e7d15851498316129a0e *man/lmtp_sdr.Rd
@@ -68,6 +68,6 @@ fa2f00559d04ecf1903aa0dba7775b0b *tests/testthat/test-censoring.R
 e04ec003361f9cbd244fef2d9486c670 *tests/testthat/test-node-list.txt
 d49525811d4ed4707663e768db5d534b *tests/testthat/test-node_list.R
 e3db572e0c2e435fdb6828b997bacbb3 *tests/testthat/test-point_treatment.R
-265427f0ae88538abf8a017d01796f6f *tests/testthat/test-shifted.R
+7658698f036529bc5311917b75e2f802 *tests/testthat/test-shifted.R
 44e8ba6d21be4316f70764c2101aaded *tests/testthat/test-survey.R
 6daa65f5f4973ad676d606f5eb08c2ed *tests/testthat/test-time_varying_treatment.R
